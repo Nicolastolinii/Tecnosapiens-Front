@@ -8,6 +8,14 @@ export default {
     extend: {fontFamily: {
       openSans: ['Poppins', 'sans-serif'],
     },
+    container: {
+      center: true,
+      maxWidth: {
+        default: '100px',},
+    },
+    minWidth: {
+        default: '1000px',},
+    
     },
   },
   plugins: [],

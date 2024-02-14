@@ -2,10 +2,11 @@ import { Sidebar } from "./Sidebar"
 import SearchIcon from "../../../assets/lupa.png"
 import github from "../../../assets/github.png"
 import linkedin from "../../../assets/linkedin.png"
+import { Link } from "react-router-dom"
 export const NavBar = () => {
   return (
     <>
-      <nav className="border-b-2 flex justify-center ">
+      <nav className="border-b-2 mb-6 flex justify-center ">
         <div className="w-full justify-between flex items-center py-4 px-4 md:container lg:px-16">
           <div className="relative hidden md:inline-block">
             <input
@@ -19,7 +20,9 @@ export const NavBar = () => {
               }}
             />
           </div>
+          <Link to="/">
           <p className="font-openSans text-xl font-bold text-center uppercase">blog</p>
+          </Link>
           <div className="flex space-x-4 items-center">
             <a className="hidden md:inline-block" href="#">
               <img className="h-4" src={github} alt="GitHub" />

@@ -1,9 +1,10 @@
+import truncateText from "../../utils/truncateText";
 
 const Card = ({ blog, showContent= true, w,flex,mb,imgh,imgmargin, padd ,centerText}) => {
     return (
       <div className={`w-full ${w} ${mb} ${flex}`}>
         <a href="#">
-          <img className={`w-full rounded-lg ${imgh}  ${imgmargin}`} src={blog.image} alt={blog.title} />
+          <img className={`w-full rounded-lg ${imgh}  ${imgmargin}`} src={`data:image;base64,${blog.imagen}`} alt={blog.title} />
         </a>
         <div className={`font-openSans ${padd} ${centerText}  min-w-[280px]`}>
           <div>
@@ -11,10 +12,10 @@ const Card = ({ blog, showContent= true, w,flex,mb,imgh,imgmargin, padd ,centerT
           <span className="text-[#888] font-normal text-sm">— July 2, 2020</span>
           </div>
           <a href="">
-            <h2 className="text-lg font-bold leading-6 ">{blog.title}</h2>
+            <h2 className="text-lg font-bold leading-6 ">{blog.titulo}</h2>
           </a>
           {showContent && (
-          <p className="font-normal text-sm text-[#888] pt-4">{blog.content}</p>
+          <p className="font-normal text-sm text-[#888] pt-4"dangerouslySetInnerHTML={{ __html: truncateText(blog.contenido, 100) }}></p>
         )}
         </div>
       </div>

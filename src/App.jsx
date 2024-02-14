@@ -1,22 +1,28 @@
+import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
+import { Home } from './screen/Home';
+import { LoginScreen } from './screen/LoginScreen';
+import { PostCreator } from './screen/PostCreator';
+import { AuthProvider, useAuth } from './utils/AuthProvider';
 
-import { Footer } from "./Footer"
-import { CardBig } from "./components/main/CardBig"
-import { CardSmall } from "./components/main/CardSmall"
-import CarouselBlog from "./components/main/CarouselBlog"
-import { NavBar } from "./components/main/navbar/NavBar"
+// Componente de protección de ruta
+const ProtectedRoute = ({ element, ...props }) => {
+  const { token } = useAuth();
+  return token ? element : <Navigate to="/login" />;
+};
 
 function App() {
-
   return (
-    <>
-      <NavBar />
-      <h1 className="container mx-auto text-center items-center font-bold text-[40px] py-10">Trending</h1>
-      <CarouselBlog />
-      <CardBig />
-      <CardSmall />
-      <Footer />
-    </>
-  )
+    <AuthProvider>
+      <Router>
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/login" element={<LoginScreen />} />
+          {/* Utiliza el componente de protección de ruta para la ruta /create */}
+          <Route path="/create" element={<ProtectedRoute element={<PostCreator />} />} />
+        </Routes>
+      </Router>
+    </AuthProvider>
+  );
 }
 
-export default App
+export default App;

@@ -1,7 +1,6 @@
 import Slider from 'react-slick';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
-import useFetch from '../../utils/useFetch';
 import truncateText from '../../utils/truncateText';
 
 
@@ -26,7 +25,7 @@ const CarouselBlog = ({data}) => {
       {latestBlogs?.map((blog) => (
         <div key={blog.id} className="max-w-full box-border font-openSans">
           <div className="flex flex-col lg:flex-row items-center justify-center h-full">
-          <a href={`http://localhost:8080/blog/${blog.id}`}>
+          <a href={`/blog/${blog.id}`}>
               <img src={`data:image;base64,${blog.imagen}`} alt={blog.title} className="lg:w-[28rem] w-full h-auto lg:h-[23rem] rounded-lg" />
             </a>
             <div className="text-black text-left flex w-full flex-col gap-3 lg:pl-[3rem]">

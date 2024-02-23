@@ -18,6 +18,15 @@ export const Home = () => {
             </>
         );
     }
+    if (!data || data.length === 0) {
+        return (
+            <>
+                <NavBar />
+                <h1>404 Not Found</h1>
+                <Footer />
+            </>
+        );
+    }
 
     // Una vez que los datos están cargados, renderiza el contenido de Home
     return (

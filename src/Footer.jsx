@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom'
 import github from './assets/github.png'
 import linkedin from './assets/linkedin.png'
 
@@ -9,23 +10,23 @@ export const Footer = () => {
                     <div className=''>
                         <ul className=" flex gap-6">
                             <li className='w-10 h-10 bg-gray-300 flex items-center justify-center rounded-xl'>
-                                <a href="">
+                                <Link href="">
                                     <img className='w-5 ' src={github} alt="" />
-                                </a>
+                                </Link>
                             </li>
                             <li className='w-10 h-10 bg-gray-300 flex items-center justify-center rounded-xl'>
-                                <a href="">
+                                <Link>
                                     <img className='w-5' src={linkedin} alt="" />
-                                </a>
+                                </Link>
                             </li>
                         </ul>
                     </div>
                     <div className='text-[#888] font-openSans text-sm'>
                         <p>Copyright ©2024 All rights reserved </p>
                         <div className='pt-4'>
-                            <span><a href="#">Terms & Conditions</a></span>
+                            <span><Link href="#">Terms & Conditions</Link></span>
                             <span className='px-4'>/</span>
-                            <span><a href="#">Privacy Policy</a></span>
+                            <span><Link href="#">Privacy Policy</Link></span>
                         </div>
                     </div>
                 </div>

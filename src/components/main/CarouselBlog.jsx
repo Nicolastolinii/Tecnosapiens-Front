@@ -5,7 +5,7 @@ import truncateText from '../../utils/truncateText';
 
 
 
-const CarouselBlog = ({data}) => {
+const CarouselBlog = ({ data }) => {
   const latestBlogs = data ? data.slice(-4).reverse() : [];
 
   const settings = {
@@ -21,20 +21,26 @@ const CarouselBlog = ({data}) => {
   };
 
   return (
-    <Slider {...settings} className=" overflow-hidden relative w-full h-full container lg:px-16">
+    <Slider {...settings} className=" overflow-hidden relative w-full h-full container lg:px-16 ">
       {latestBlogs?.map((blog) => (
-        <div key={blog.id} className="max-w-full box-border font-openSans">
-          <div className="flex flex-col lg:flex-row items-center justify-center h-full">
-          <a href={`/blog/${blog.id}`}>
-              <img src={`data:image;base64,${blog.imagen}`} alt={blog.title} className="lg:w-[28rem] w-full h-auto lg:h-[23rem] rounded-lg" />
+        <div key={blog.id} className="max-w-full box-border font-openSans p-6  ">
+          <div className="flex flex-col lg:flex-row items-center justify-center h-full ">
+            <a href={`/blog/${blog.id}`}>
+              <img src={`data:image;base64,${blog.imagen}`} alt={blog.title} className="object-cover w-full h-auto lg:h-[23rem] rounded-lg" />
             </a>
             <div className="text-black text-left flex w-full flex-col gap-3 lg:pl-[3rem]">
               <div className='font-semibold text-[14px] mb-4'>
-                <span className='font-semibold'>{blog.categoria}</span>
-                <span className='text-[#999] font-normal'>— {new Date(blog.timeData).toLocaleDateString()}</span>
+                <div className="flex items-center">
+                  <div className="  rounded-xl text-center bg-[#f79a185b]  items-center px-2">
+                    <span className="text-[#222]  font-bold   text-xs">{blog.categoria.split()} </span>
+                  </div>
+                  <div>
+                    <span className="text-[#888] font-normal pl-1 text-sm">— {new Date(blog.timeData).toLocaleDateString()}</span>
+                  </div>
+                </div>
               </div>
               <h3 className='font-bold text-[30px] lg:text-[40px] leading-10'>{blog.titulo}</h3>
-              <p className='font-normal text-[14px] opacity-60'dangerouslySetInnerHTML={{ __html: truncateText(blog.contenido,200) }}></p>
+              <p className='font-normal text-[14px] opacity-60' dangerouslySetInnerHTML={{ __html: truncateText(blog.contenido, 500) }}></p>
             </div>
           </div>
         </div>

@@ -8,7 +8,7 @@ import useFetch from '../utils/useFetch'
 import Loader from '../components/loader/loader'
 
 export const Home = () => {
-    const { data, loading} = useFetch('http://localhost:8080/blog/all')
+    const { data, loading } = useFetch('http://localhost:8080/blog/all')
     if (loading) {
         // Muestra el componente Loader mientras los datos se están cargando
         return (
@@ -31,11 +31,13 @@ export const Home = () => {
     // Una vez que los datos están cargados, renderiza el contenido de Home
     return (
         <>
-            <NavBar />
-            <CarouselBlog data={data} />
-            <CardBig data={data} />
-            <CardSmall data={data} />
-            <Footer />
+            <div className='bg-[#F9F9FE]'>
+                <NavBar />
+                <CarouselBlog data={data} />
+                <CardBig data={data} />
+                <CardSmall data={data} />
+                <Footer />
+            </div>
         </>
     )
 }

@@ -33,6 +33,7 @@ export const CreatePost = () => {
               if (response.ok) {
                 const data = await response.json();
                 console.log('Blog creado:', data);
+                window.location.reload();
                 setRedirect(true);
               } else {
                 console.error('Error al crear el blog-1:', response.statusText);
@@ -44,7 +45,7 @@ export const CreatePost = () => {
           };
       
         if (redirect) {
-          //return <Navigate to={'/'} />
+          return <Navigate to={'/'} />
         }
         const handleChange = (eventOrContent) => {
             if (typeof eventOrContent === 'object') {

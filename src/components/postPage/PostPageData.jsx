@@ -1,4 +1,4 @@
-import { useParams } from "react-router-dom"
+import { Link, useParams } from "react-router-dom"
 import useFetch from "../../utils/useFetch"
 import dataFormat from './dataFormat';
 import "./style.css"
@@ -10,7 +10,12 @@ const PostPageData = () => {
     const formattedDate = data ? dataFormat(data) : null;
 
     return (
-        <div className="container component-styles flex flex-col justify-center px-8 items-center text-center ">
+        <div className="container component-styles  flex flex-col justify-center pt-24 px-8 items-center text-center ">
+            <div className=" pb-3 text-[14px]  font-openSans opacity-75 w-3/4 text-left">
+                <Link className="hover:text-blue-700 transition duration-200" to="/">Home</Link>
+                <span className=""> &gt; </span>
+                <span>Post</span>
+            </div>
             <h1 className="font-bold font-openSans text-4xl  leading-10 w-3/4 text-balance upp mt-10 mb-3 ">{data?.titulo}</h1>
             <div className="w-[15rem] opacity-70 font-openSans text-sm flex justify-between">
                 <span>{formattedDate}</span>
@@ -19,7 +24,9 @@ const PostPageData = () => {
                     <span className="pl-1">IT</span>
                 </div>
             </div>
-            <div className="flex pt-12 justify-center w-3/4  h-[35rem]">
+            
+            <div className="flex mt-12 justify-center w-3/4  h-[35rem]">
+
                 {data && data.imagen && (
                     <img src={`data:image;base64,${data.imagen}`} alt={data.titulo} className="w-[100%] bg-cover object-cover rounded-lg" />
                 )}

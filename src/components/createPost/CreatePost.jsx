@@ -80,7 +80,7 @@ export const CreatePost = () => {
             className="input-editor"
             name="categoria"
              placeholder={'Categoria'}
-             value={blogData.categoria}
+             value={blogData.categoria.toLowerCase()}
              onChange={handleChange} />
       <input type="file"
             className="input-editor"

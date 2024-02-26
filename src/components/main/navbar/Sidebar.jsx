@@ -1,13 +1,14 @@
 import React, { useState } from 'react';
 import { useAuth } from '../../../utils/AuthProvider';
 import { Link } from 'react-router-dom';
+import useFetch from '../../../utils/useFetch';
 
 export const Sidebar = () => {
   const { token } = useAuth();
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
   const [isHovered, setIsHovered] = useState(false);
   const [isCategoriesOpen, setIsCategoriesOpen] = useState(false); // Nuevo estado para controlar si la sección de categorías está abierta o cerrada
-
+  const {data} =useFetch("http://localhost:8080/blog/category")
   const toggleSidebar = () => {
     setIsSidebarOpen(!isSidebarOpen);
   };
@@ -35,7 +36,7 @@ export const Sidebar = () => {
         ></span>
       </button>
       <div
-        className={`fixed top-0 right-0 h-full w-[18rem] bg-white text-white transform ${isSidebarOpen ? 'translate-x-0 shadow-2xl' : 'translate-x-full'
+        className={`fixed top-0 right-0 h-full w-[18rem] font-openSans font-semibold bg-white text-white transform ${isSidebarOpen ? 'translate-x-0 shadow-2xl' : 'translate-x-full'
           } transition-transform duration-300 ease-in-out`}
       >
         <button className="fixed top-4 right-4 text-white z-50" onClick={toggleSidebar}>
@@ -50,8 +51,11 @@ export const Sidebar = () => {
           </button>
           {isCategoriesOpen && (
             <>
-              <a className='pl-2 hover:text-[#f79918] ease-in duration-150' href="/categoria1">• Categoría 1</a>
-              <a className='pl-2 hover:text-[#f79918] ease-in duration-150' href="/categoria2">• Categoría 2</a>
+              {
+                data?.map((category, index) =>(
+                  <Link key={index} className='pl-2 text-xs  hover:text-[#f79918] ease-in duration-150' to={`/filter?categoria=${category}`}>• {category.toUpperCase()}</Link>
+                ))
+              }
             </>
           )}
           {

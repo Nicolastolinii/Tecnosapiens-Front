@@ -4,6 +4,7 @@ import { LoginScreen } from './screen/LoginScreen';
 import { PostCreator } from './screen/PostCreator';
 import { AuthProvider, useAuth } from './utils/AuthProvider';
 import { PostPage } from './screen/PostPage';
+import { Filter } from './screen/Filter';
 
 // Componente de protección de ruta
 const ProtectedRoute = ({ element, ...props }) => {
@@ -18,8 +19,9 @@ function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/login" element={<LoginScreen />} />
-          {/* Utiliza el componente de protección de ruta para la ruta /create */}
           <Route path="/create" element={<ProtectedRoute element={<PostCreator />} />} />
+          <Route path="/filter" element={<Filter />} />
+
           <Route path='/blog/:id' element={<PostPage/>} />
         </Routes>
       </Router>

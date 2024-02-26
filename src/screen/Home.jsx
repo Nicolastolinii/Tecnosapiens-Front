@@ -5,24 +5,32 @@ import { CardBig } from '../components/main/CardBig'
 import { CardSmall } from '../components/main/CardSmall'
 import { Footer } from '../Footer'
 import useFetch from '../utils/useFetch'
-import Loader from '../components/loader/loader'
+import { NotFound } from '../components/404/NotFound'
+import { HashLoader } from 'react-spinners'
 
 export const Home = () => {
+
     const { data, loading } = useFetch('http://localhost:8080/blog/all')
     if (loading) {
         // Muestra el componente Loader mientras los datos se están cargando
         return (
             <>
                 <NavBar />
-                <Loader />
+                <div className='h-screen  bg-[#F9F9FE] flex justify-center items-center'>
+                    <HashLoader
+                        color="#333333"
+                        size={250}
+                        speedMultiplier={1}
+                    />
+                </div>
             </>
         );
     }
-    if (!data || data.length === 0) {
+    if (!data) {
         return (
             <>
                 <NavBar />
-                <h1>404 Not Found</h1>
+                <NotFound />
                 <Footer />
             </>
         );

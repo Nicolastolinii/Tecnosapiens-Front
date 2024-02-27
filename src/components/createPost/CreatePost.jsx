@@ -3,6 +3,7 @@ import 'react-quill/dist/quill.snow.css';
 import './style.css';
 import Editor from "./Editor";
 import { useAuth } from "../../utils/AuthProvider";
+import { Navigate } from "react-router-dom";
 export const CreatePost = () => {
     const [blogData, setBlogData] = useState({
         titulo: '',
@@ -28,7 +29,7 @@ export const CreatePost = () => {
               };
         
               // Realizar la solicitud para crear un blog
-              const response = await fetch('http://localhost:8080/blog/create', requestOptions);
+              const response = await fetch('https://blog-api-production-2065.up.railway.app/blog/create', requestOptions);
         
               if (response.ok) {
                 const data = await response.json();

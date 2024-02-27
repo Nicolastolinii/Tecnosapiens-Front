@@ -8,7 +8,7 @@ export const Sidebar = () => {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
   const [isHovered, setIsHovered] = useState(false);
   const [isCategoriesOpen, setIsCategoriesOpen] = useState(false); // Nuevo estado para controlar si la sección de categorías está abierta o cerrada
-  const {data} =useFetch("http://localhost:8080/blog/category")
+  const {data} =useFetch("https://blog-api-production-2065.up.railway.app/blog/category")
   const toggleSidebar = () => {
     setIsSidebarOpen(!isSidebarOpen);
   };

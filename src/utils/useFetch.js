@@ -23,7 +23,7 @@ function useFetch(url) {
 
     fetchData();
 
-    return () => {};
+    return () => { };
   }, [url]);
 
   return { data, loading, error };

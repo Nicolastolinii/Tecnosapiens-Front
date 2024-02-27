@@ -1,6 +1,9 @@
 import React, { useState } from 'react';
+import { useAuth } from './utils/AuthProvider';
 
 function CrearBlog() {
+  const { token } = useAuth();
+
   const [blogData, setBlogData] = useState({
     titulo: '',
     contenido: '',
@@ -8,7 +11,7 @@ function CrearBlog() {
     categoria: '',
     imageBase64: ''
   });
-  const token= 'eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJuaXh4IiwiaWF0IjoxNzA3NzAzMjc1LCJleHAiOjE3MDc3MDY4NzV9.U_KpLTE9mD1oea6wEeF29wjfStZ7PulW0ss57OTdWYNE9dov2vgVluRnXCfAhtf7iL_1ar54Qh10c_sTWibdOw'
+ 
   const handleSubmit = async (event) => {
     event.preventDefault();
 

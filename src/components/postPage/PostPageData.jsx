@@ -6,7 +6,7 @@ import "./style.css"
 
 const PostPageData = () => {
     const { id } = useParams()
-    const { data } = useFetch(`http://localhost:8080/blog/${id}`)
+    const { data } = useFetch(`https://blog-api-production-2065.up.railway.app/blog/${id}`)
     const formattedDate = data ? dataFormat(data) : null;
 
     return (

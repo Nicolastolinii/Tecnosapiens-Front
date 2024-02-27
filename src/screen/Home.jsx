@@ -10,7 +10,7 @@ import { HashLoader } from 'react-spinners'
 
 export const Home = () => {
 
-    const { data, loading } = useFetch('http://localhost:8080/blog/all')
+    const { data, loading } = useFetch('https://blog-api-production-2065.up.railway.app/blog/all')
     if (loading) {
         // Muestra el componente Loader mientras los datos se están cargando
         return (

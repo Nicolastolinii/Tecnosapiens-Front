@@ -10,7 +10,7 @@ export const FilterC = () => {
     const [loading, setLoading] = useState(true);
     const [filterr, setFilterr] = useState("")
     const [filteredData, setFilteredData] = useState([])
-    const { data } = useFetch("http://localhost:8080/blog/all")
+    const { data } = useFetch("https://blog-api-production-2065.up.railway.app/blog/all")
     const handleFilter = (event) => {
         if (event.key === "Enter") {
             setFilteredData(data?.filter((post) => post.categoria === filterr.toLowerCase()));
@@ -20,7 +20,7 @@ export const FilterC = () => {
 
         const fetchData = async () => {
             setLoading(true);
-            const response = await fetch(`http://localhost:8080/blog/all`);
+            const response = await fetch(`https://blog-api-production-2065.up.railway.app/blog/all`);
             const data = await response.json();
             setLoading(false);
             if (categoria) {

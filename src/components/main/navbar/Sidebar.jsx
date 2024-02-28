@@ -8,7 +8,7 @@ export const Sidebar = () => {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
   const [isHovered, setIsHovered] = useState(false);
   const [isCategoriesOpen, setIsCategoriesOpen] = useState(false); // Nuevo estado para controlar si la sección de categorías está abierta o cerrada
-  const {data} =useFetch("https://blog-api-production-2065.up.railway.app/blog/category")
+  const {data} = useFetch("https://blog-api-production-2065.up.railway.app/blog/category")
   const toggleSidebar = () => {
     setIsSidebarOpen(!isSidebarOpen);
   };
@@ -44,7 +44,7 @@ export const Sidebar = () => {
           <span className="block h-0.5 w-6 bg-black transform -rotate-45 translate-y-0.5"></span>
         </button>
         <div className="transition-all px-10 mt-[4rem] w-full h-2/4 flex flex-col space-y-2 font-openSans text-[14px] text-black">
-          <a className='text-[#f79918] ease-in duration-150' href="/">Inicio</a>
+          <Link className='text-[#f79918] ease-in duration-150' to="/">Inicio</Link>
           <button className="text-left hover:text-[#f79918] ease-in duration-150 focus:outline-none flex items-center justify-between w-full" onClick={toggleCategories}>
             <span>Categorías</span>
             {isCategoriesOpen ? <span>▲</span> : <span>▼</span>}

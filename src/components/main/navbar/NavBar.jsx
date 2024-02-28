@@ -1,7 +1,7 @@
 import { Sidebar } from "./Sidebar"
-import SearchIcon from "../../../assets/lupa.png"
-import github from "../../../assets/github.png"
-import linkedin from "../../../assets/linkedin.png"
+import SearchIcon from "../../../assets/lupa.webp"
+import github from "../../../assets/github.webp"
+import linkedin from "../../../assets/linkedin.webp"
 import { Link, useNavigate } from "react-router-dom"
 export const NavBar = ({input = true}) => {
   const navigate = useNavigate();
@@ -36,12 +36,12 @@ export const NavBar = ({input = true}) => {
           <p className="font-openSans text-xl font-bold text-center   transition transform hover:-translate-y-1">TecnoSapiens </p>
           </Link>
           <div className="flex space-x-4  items-center">
-            <a className="hidden md:inline-block transition transform hover:-translate-y-1 p-2" href="#">
+            <Link className="hidden md:inline-block transition transform hover:-translate-y-1 p-2" href="https://github.com/Nicolastolinii">
               <img className="h-4" src={github} alt="GitHub" />
-            </a>
-            <a className="hidden md:inline-block transition transform hover:-translate-y-1 p-2" href="#">
+            </Link>
+            <Link className="hidden md:inline-block transition transform hover:-translate-y-1 p-2" href="https://www.linkedin.com/in/nicolastolini/">
               <img className="h-4" src={linkedin} alt="LinkedIn" />
-            </a>
+            </Link>
             <Sidebar />
           </div>
         </div>

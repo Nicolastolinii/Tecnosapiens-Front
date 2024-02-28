@@ -26,8 +26,8 @@ const CarouselBlog = ({ data }) => {
       {latestBlogs?.map((blog) => (
         <div key={blog.id} className="max-w-full box-border font-openSans p-6  ">
           <div className="flex flex-col lg:flex-row items-center justify-center h-full ">
-            <Link href={`/blog/${blog.id}`}>
-              <img loading='lazy' src={`data:image;base64,${blog.imagen}`} alt={blog.title} className="object-cover w-full h-auto lg:h-[23rem] rounded-lg" />
+            <Link to={`/blog/${blog.id}`}>
+              <img  src={`data:image;base64,${blog.imagen}`} alt={blog.title} className="object-cover w-full h-auto lg:h-[23rem] rounded-lg" />
             </Link>
             <div className="text-black text-left flex w-full flex-col gap-3 lg:pl-[3rem]">
               <div className='font-semibold text-[14px] mb-4'>

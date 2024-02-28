@@ -7,7 +7,7 @@ export const CardSmall = ({ data }) => {
   return (
     <div>
       <div className="flex items-center container pt-28 pb-10 px-16">
-        <h2 className="font-openSans font-semibold pr-4 text-4xl">Ultimos Artículos</h2>
+        <h2 className="font-poppins font-semibold pr-4 text-4xl">Ultimos Artículos</h2>
         <hr className=" border-t-2 border-[#f79a185b]  w-[18rem]" />
         
       </div>

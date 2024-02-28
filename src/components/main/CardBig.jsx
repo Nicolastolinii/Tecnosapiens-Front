@@ -8,7 +8,7 @@ export const CardBig = ({ data }) => {
     <div>
       <div className="flex items-center justify-center container pt-[10rem] pb-6  lg:px-16">
         <hr className=" border-t-2 border-[#f79a185b]  w-[18rem]" />
-        <h2 className="font-openSans font-semibold px-2  text-4xl">Destacados</h2>
+        <h2 className=" font-poppins font-semibold px-2  text-4xl">Destacados</h2>
         <hr className=" border-t-2 border-[#f79a185b]  w-[18rem]" />
       </div>
       <div className="container gap-14 flex-col lg:flex-row  flex flex-wrap lg:px-16 pt-10">

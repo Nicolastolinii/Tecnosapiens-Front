@@ -33,7 +33,7 @@ export const NavBar = ({input = true}) => {
           : ""
           }
           <Link to="/">
-          <p className="font-openSans text-xl font-bold text-center   transition transform hover:-translate-y-1">TecnoSapiens </p>
+          <p className="font-poppins font-bold text-xl  text-center   transition transform hover:-translate-y-1">TecnoSapiens </p>
           </Link>
           <div className="flex space-x-4  items-center">
             <Link className="hidden md:inline-block transition transform hover:-translate-y-1 p-2" href="https://github.com/Nicolastolinii">

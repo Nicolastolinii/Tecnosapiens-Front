@@ -16,7 +16,7 @@ const CarouselBlog = ({ data }) => {
     slidesToShow: 1,
     slidesToScroll: 1,
     autoplay: true,
-    autoplaySpeed: 3000,
+    autoplaySpeed: 3500,
     cssEase: 'linear',
 
   };
@@ -24,7 +24,7 @@ const CarouselBlog = ({ data }) => {
   return (
     <Slider {...settings} className=" overflow-hidden relative w-full h-full container pt-32 lg:px-16 ">
       {latestBlogs?.map((blog) => (
-        <div key={blog.id} className="max-w-full box-border font-openSans p-6  ">
+        <div key={blog.id} className="max-w-full box-border font-poppins p-6  ">
           <div className="flex flex-col lg:flex-row items-center justify-center h-full ">
             <Link to={`/blog/${blog.id}`}>
               <img  src={`data:image;base64,${blog.imagen}`} alt="imagenes de portada de las tarjetas que representan cada post del blog" className="object-cover w-full h-auto lg:h-[23rem] rounded-lg" />

@@ -1,15 +1,23 @@
 import { Link } from "react-router-dom";
 import truncateText from "../../utils/truncateText";
 import "./style.css"
+import LazyLoad from 'react-lazy-load';
+
 
 const Card = ({ blog, showContent = true, w, flex, mb, imgh, imgmargin, padd, centerText, href }) => {
+
   return (
     <div className={`w-full ${w} ${mb} ${flex} bg-white rounded-xl shadow-custom p-4 transition transform hover:-translate-y-2 hover:-translate-x-2 hover:scale-105`}>
-      
-      <Link to={href}>
-        <img loading="lazy" alt="imagenes de portada de las tarjetas que representan cada post del blog" className={`bg-cover object-cover w-full rounded-lg ${imgh}  ${imgmargin}`} src={`data:image;base64,${blog.imagen}`}  />
-      </Link>
-      <div className={`font-openSans ${padd} ${centerText}  min-w-[280px] `}>
+      <LazyLoad  offset={100}>
+        <Link aria-label="Leer el artículo completo." to={href}>
+          <img
+            src={`data:image;base64,${blog.imagen}`}
+            alt="imagenes de portada de las tarjetas que representan cada post del blog"
+            className={`bg-cover object-cover w-full rounded-lg ${imgh} ${imgmargin}`}
+          />
+        </Link>
+      </LazyLoad>
+      <div className={`font-poppins ${padd} ${centerText}  min-w-[280px] `}>
         <div>
           <div className="flex items-center">
             <div className="  rounded-xl text-center bg-[#f79a185b]  items-center px-2">

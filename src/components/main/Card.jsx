@@ -4,14 +4,14 @@ import "./style.css"
 import LazyLoad from 'react-lazy-load';
 
 
-const Card = ({ blog, showContent = true, w, flex, mb, imgh, imgmargin, padd, centerText, href }) => {
+const Card = ({ blog, showContent = true, w, flex, mb, imgh, imgmargin, padd, centerText, href, className }) => {
 
   return (
-    <div className={`w-full ${w} ${mb} ${flex} bg-white rounded-xl shadow-custom p-4 transition transform hover:-translate-y-2 hover:-translate-x-2 hover:scale-105`}>
-      <LazyLoad  offset={100}>
-        <Link aria-label="Leer el artículo completo." to={href}>
+    <div className={`w-full ${w} ${mb} ${flex} ${className} bg-white rounded-xl shadow-custom p-4 transition transform hover:-translate-y-2 hover:-translate-x-2 hover:scale-105`}>
+      <LazyLoad className="md:pb-0 pb-4"  offset={100}>
+        <Link  aria-label="Leer el artículo completo." to={href}>
           <img
-            src={`data:image;base64,${blog.imagen}`}
+            src={blog.imagen}
             alt="imagenes de portada de las tarjetas que representan cada post del blog"
             className={`bg-cover object-cover w-full rounded-lg ${imgh} ${imgmargin}`}
           />

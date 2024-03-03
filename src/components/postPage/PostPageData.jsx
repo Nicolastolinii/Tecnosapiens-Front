@@ -2,11 +2,13 @@ import { Link, useParams } from "react-router-dom"
 import useFetch from "../../utils/useFetch"
 import dataFormat from './dataFormat';
 import "./style.css"
+import { useAuth } from "../../utils/AuthProvider";
 
 
 const PostPageData = () => {
+    const { API } = useAuth();
     const { id } = useParams()
-    const { data } = useFetch(`https://blog-api-production-2065.up.railway.app/blog/${id}`)
+    const { data } = useFetch(`${API}/blog/${id}`)
     const formattedDate = data ? dataFormat(data) : null;
 
     return (
@@ -16,7 +18,7 @@ const PostPageData = () => {
                 <span className=""> &gt; </span>
                 <span>Post</span>
             </div>
-            <h1 className="font-bold font-openSans text-4xl  leading-10 w-3/4 text-balance upp mt-10 mb-3 ">{data?.titulo}</h1>
+            <h1 className="font-bold font-openSans text-3xl lg:text-4xl  leading-10 w-3/4 text-balance upp mt-10 mb-3 ">{data?.titulo}</h1>
             <div className="w-[15rem] opacity-70 font-openSans text-sm flex justify-between">
                 <span>{formattedDate}</span>
                 <div>
@@ -25,10 +27,10 @@ const PostPageData = () => {
                 </div>
             </div>
             
-            <div className="flex mt-12 justify-center w-3/4  h-[35rem]">
+            <div className="flex mt-12 justify-center lg:w-3/4  lg:h-[35rem]">
 
-                {data && data.imagen && (
-                    <img src={`data:image;base64,${data.imagen}`} alt={data.titulo} className="w-[100%] bg-cover object-cover rounded-lg" />
+                {data?.imagen && (
+                    <img src={data?.imagen} alt={data.titulo} className="w-[100%] bg-cover object-cover rounded-lg" />
                 )}
             </div>
             <div className="w-3/4 mt-14">

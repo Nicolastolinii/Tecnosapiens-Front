@@ -27,7 +27,7 @@ const CarouselBlog = ({ data }) => {
         <div key={blog.id} className="max-w-full box-border font-poppins p-6  ">
           <div className="flex flex-col lg:flex-row items-center justify-center h-full ">
             <Link to={`/blog/${blog.id}`}>
-              <img  src={`data:image;base64,${blog.imagen}`} alt="imagenes de portada de las tarjetas que representan cada post del blog" className="object-cover w-full h-auto lg:h-[23rem] rounded-lg" />
+              <img  src={blog.imagen} alt="imagenes de portada de las tarjetas que representan cada post del blog" className="object-cover w-full h-auto lg:h-[23rem] rounded-lg" />
             </Link>
             <div className="text-black text-left flex w-full flex-col gap-3 lg:pl-[3rem]">
               <div className='font-semibold text-[14px] mb-4'>

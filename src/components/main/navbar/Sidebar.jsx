@@ -4,11 +4,11 @@ import { Link } from 'react-router-dom';
 import useFetch from '../../../utils/useFetch';
 
 export const Sidebar = () => {
-  const { token } = useAuth();
+  const { token, API } = useAuth();
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
   const [isHovered, setIsHovered] = useState(false);
   const [isCategoriesOpen, setIsCategoriesOpen] = useState(false); // Nuevo estado para controlar si la sección de categorías está abierta o cerrada
-  const {data} = useFetch("https://blog-api-production-2065.up.railway.app/blog/category")
+  const { data } = useFetch(`${API}/blog/category`)
   const toggleSidebar = () => {
     setIsSidebarOpen(!isSidebarOpen);
   };
@@ -20,7 +20,7 @@ export const Sidebar = () => {
   return (
     <div className="relative z-50">
       <button
-        className="flex flex-col sm:ml-0 lg:ml-[8rem] md:ml-[5rem]"
+        className="flex px-2 py-2 flex-col sm:ml-0 lg:ml-[8rem] md:ml-[5rem]"
         onMouseEnter={() => setIsHovered(true)}
         onMouseLeave={() => setIsHovered(false)}
         onClick={toggleSidebar}
@@ -52,18 +52,18 @@ export const Sidebar = () => {
           {isCategoriesOpen && (
             <>
               {
-                data?.map((category, index) =>(
+                data?.map((category, index) => (
                   <Link key={index} className='pl-2 text-xs  hover:text-[#f79918] ease-in duration-150' to={`/filter?categoria=${category}`}>• {category.toUpperCase()}</Link>
                 ))
               }
             </>
           )}
           {
-            token ? 
-            <Link to={"/create"}  className='hover:text-[#f79918] ease-in duration-150'>
-            CreateBlog
-            </Link>
-            : ""
+            token ?
+              <Link to={"/create"} className='hover:text-[#f79918] ease-in duration-150'>
+                CreateBlog
+              </Link>
+              : ""
           }
         </div>
       </div>

@@ -6,7 +6,7 @@ import { useNavigate } from "react-router-dom";
 
 const Login = () => {
   const [formData, setFormData] = useState({ user: '', password: '' });
-  const { login } = useAuth();
+  const { login, API } = useAuth();
   const navigate = useNavigate();
 
   const handleChange = (e) => {
@@ -17,7 +17,7 @@ const Login = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await fetch('https://blog-api-production-2065.up.railway.app/auth/login', {
+      const response = await fetch(`${API}/auth/login`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

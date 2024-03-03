@@ -3,6 +3,13 @@
     box-shadow: var(--tw-ring-offset-shadow,0 0 transparent), var(--tw-ring-shadow,0 0 transparent), var(--tw-shadow);
   }
   .max-width-calc {
-    max-width: calc(50% - 3.5rem);
+    max-width: calc(50% - 3.5rem); /* Ancho máximo por defecto */
+  }
+  
+  /* Media query para dispositivos móviles con un ancho máximo del 100% */
+  @media screen and (max-width: 767px) {
+    .max-width-calc {
+      max-width: 100%; /* Ancho máximo del 100% en dispositivos móviles */
+    }
   }
   

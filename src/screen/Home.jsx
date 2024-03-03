@@ -7,10 +7,11 @@ import { Footer } from '../Footer'
 import useFetch from '../utils/useFetch'
 import { NotFound } from '../components/404/NotFound'
 import { HashLoader } from 'react-spinners'
+import { useAuth } from '../utils/AuthProvider'
 
 export const Home = () => {
-
-    const { data, loading } = useFetch('https://blog-api-production-2065.up.railway.app/blog/all')
+    const { API } = useAuth();
+    const { data, loading } = useFetch(`${API}/blog/all`);
     if (loading) {
         // Muestra el componente Loader mientras los datos se están cargando
         return (
@@ -40,7 +41,7 @@ export const Home = () => {
     return (
         <>
             <div className='bg-[#F9F9FE]'>
-                <NavBar />
+                <NavBar data={data} />
                 <CarouselBlog data={data} />
                 <CardBig data={data} />
                 <CardSmall data={data} />

@@ -1,93 +1,88 @@
-import {useState} from "react";
+import { useState } from "react";
 import 'react-quill/dist/quill.snow.css';
-import './style.css';
-import Editor from "./Editor";
-import { useAuth } from "../../utils/AuthProvider";
+import './style.css'; // Assuming the existence of this file for styling
+import Editor from "./Editor"; // Assuming the existence of this component
+import { useAuth } from "../../utils/AuthProvider"; // Assuming the existence of this utility
 import { Navigate } from "react-router-dom";
-export const CreatePost = () => {
-    const [blogData, setBlogData] = useState({
-        titulo: '',
-        contenido: '',
-        autorId: 1, // Aquí debes establecer el ID del autor según tu lógica de autenticación/autorización
-        categoria: '',
-        imageBase64: ''
-      });
-      const { token } = useAuth();
-        const [redirect, setRedirect] = useState(false);
-        async function createNewPost(event) {
-            event.preventDefault();
 
-            try {
-              // Construir el objeto de opciones para la solicitud POST
-              const requestOptions = {
-                method: 'POST',
-                headers: {
-                  'Content-Type': 'application/json',
-                  Authorization: `Bearer ${token}`
-                },
-                body: JSON.stringify(blogData)
-              };
-        
-              // Realizar la solicitud para crear un blog
-              const response = await fetch('https://blog-api-production-2065.up.railway.app/blog/create', requestOptions);
-        
-              if (response.ok) {
-                const data = await response.json();
-                console.log('Blog creado:', data);
-                window.location.reload();
-                setRedirect(true);
-              } else {
-                console.error('Error al crear el blog-1:', response.statusText);
-              }
-            } catch (error) {
-              // Si hay un error en la solicitud, puedes mostrar un mensaje de error al usuario o manejarlo de alguna otra manera
-              console.error('Error al crear el blog-2:', error);
-            }
-          };
-      
-        if (redirect) {
-          return <Navigate to={'/'} />
-        }
-        const handleChange = (eventOrContent) => {
-            if (typeof eventOrContent === 'object') {
-                // Manejar evento de cambio de elemento de formulario
-                const { name, value } = eventOrContent.target;
-                setBlogData({ ...blogData, [name]: value });
-            } else {
-                // Manejar contenido directo del editor
-                setBlogData({ ...blogData, contenido: eventOrContent });
-            }
-        };
-        
-          const handleImageChange = (event) => {
-            const file = event.target.files[0];
-            if (file) {
-              const reader = new FileReader();
-              reader.onloadend = () => {
-                setBlogData({ ...blogData, imageBase64: reader.result });
-              };
-              reader.readAsDataURL(file);
-            }
-          };
+export const CreatePost = () => {
+  const [blogData, setBlogData] = useState({
+    titulo: '',
+    contenido: '',
+    autorId: 1, // Replace with appropriate logic to set author ID
+    categoria: '',
+    image: null,
+  });
+  const { token, API } = useAuth();
+  const [redirect, setRedirect] = useState(false);
+
+  async function createNewPost(event) {
+    event.preventDefault();
+
+    const formData = new FormData();
+    formData.append('file', blogData.image);
+    formData.append('titulo', blogData.titulo);
+    formData.append('contenido', blogData.contenido);
+    formData.append('autorId', blogData.autorId);
+    formData.append('categoria', blogData.categoria);
+    console.log("FormData:", formData);
+    try {
+      const response = await fetch(`${API}/blog/create`, {
+        method: 'POST',
+        body: formData,
+      });
+      if (response.ok) {
+        const data = await response.json();
+        console.log('Blog created:', data);
+        //setRedirect(true); // Assuming you want to redirect on success
+      } else {
+        console.error('Error creating blog:', response.statusText);
+      }
+    } catch (error) {
+      console.error('Error creating blog:', error);
+    }
+  }
+
+  //if (redirect) {
+    //return <Navigate to={'/'} />; // Assuming you want to redirect to '/' on success
+  //}
+
+  // Handle form input changes
+  const handleChange = (eventOrContent) => {
+    if (typeof eventOrContent === 'object') {
+      const { name, value } = eventOrContent.target;
+      setBlogData({ ...blogData, [name]: value });
+    } else {
+      setBlogData({ ...blogData, contenido: eventOrContent }); // Update editor content
+    }
+  };
+
+
+  const handleImageChange = (event) => {
+    setBlogData({ ...blogData, image: event.target.files[0] });
+  };
+
   return (
     <form className="flex flex-col container mt-10 gap-4 h-" onSubmit={createNewPost}>
-      <input type="text"
-            name="titulo"
-            className="input-editor"
-             placeholder={'Titulo'}
-             value={blogData.titulo}
-             onChange={handleChange} />
-      <input type="text"
-            className="input-editor"
-            name="categoria"
-             placeholder={'Categoria'}
-             value={blogData.categoria.toLowerCase()}
-             onChange={handleChange} />
-      <input type="file"
-            className="input-editor"
-             onChange={handleImageChange} />
+      <input
+        type="text"
+        name="titulo"
+        className="input-editor"
+        placeholder="Titulo"
+        value={blogData.titulo}
+        onChange={handleChange}
+      />
+      <input
+        type="text"
+        className="input-editor"
+        name="categoria"
+        placeholder="Categoria"
+        value={blogData.categoria.toLowerCase()}
+        onChange={handleChange}
+      />
+      <input type="file" className="input-editor" onChange={handleImageChange} />
       <Editor value={blogData.contenido} onChange={handleChange} />
-      <button  className="button-editor">Create post</button>
+      <button className="button-editor">Create post</button>
     </form>
-  )
-}
+  );
+};

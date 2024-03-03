@@ -21,8 +21,7 @@ function App() {
           <Route path="/login" element={<LoginScreen />} />
           <Route path="/create" element={<ProtectedRoute element={<PostCreator />} />} />
           <Route path="/filter" element={<Filter />} />
-
-          <Route path='/blog/:id' element={<PostPage/>} />
+          <Route path='/blog/:id' element={<PostPage />} />'
         </Routes>
       </Router>
     </AuthProvider>

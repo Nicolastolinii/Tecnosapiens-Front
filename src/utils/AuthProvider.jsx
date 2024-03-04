@@ -1,7 +1,7 @@
 import React, { createContext, useState, useEffect, useContext } from 'react';
 
 const AuthContext = createContext();
-const API = 'http://3.15.199.6';
+const API = 'http://localhost:8080';
 export const useAuth = () => useContext(AuthContext);
 
 export const AuthProvider = ({ children }) => {

@@ -11,22 +11,22 @@ export const NavBar = ({ input = true, data }) => {
   const [filteredData, setFilteredData] = useState([])
   const [filterr, setFilterr] = useState("")
 
-  
+
   const fetchData = (value) => {
     const result = data?.filter((data) => {
-        return data && data.categoria && data.categoria.toLowerCase().includes(value);
+      return data && data.categoria && data.categoria.toLowerCase().includes(value);
     })
     setFilteredData(result)
-}
-const handleChange = (value) => {
-  setFilterr(value);
-  fetchData(value)
-}
-const handleBlur = () => {
-  setTimeout(() => {
-    setFilteredData([]);
-  }, 200);
-};
+  }
+  const handleChange = (value) => {
+    setFilterr(value);
+    fetchData(value)
+  }
+  const handleBlur = () => {
+    setTimeout(() => {
+      setFilteredData([]);
+    }, 200);
+  };
 
   return (
     <>
@@ -50,8 +50,8 @@ const handleBlur = () => {
                 />
                 <div className="absolute font-poppins font-semibold text-center bg-white w-full mt-2 rounded-sm flex flex-col uppercase text-xs">
                   {
-                    filteredData?.map((filter,intex)=>(
-                      <Link to={`/filter?categoria=${filter.categoria}`}  className="py-1 px-4 border-b hover:bg-[#f79a185b]" key={intex}>{filter.categoria}</Link>
+                    filteredData?.map((filter, intex) => (
+                      <Link to={`/filter?categoria=${filter.categoria}`} className="py-1 px-4 border-b hover:bg-[#f79a185b]" key={intex}>{filter.categoria}</Link>
                     ))
                   }
                 </div>
@@ -63,10 +63,10 @@ const handleBlur = () => {
           </Link>
           <div className="flex space-x-4  items-center">
             <Link className="hidden md:inline-block transition transform hover:-translate-y-1 p-2" href="https://github.com/Nicolastolinii">
-              <img className="h-4" src={github} alt="GitHub" />
+              <img className="h-4 w-4" src={github} alt="GitHub" />
             </Link>
             <Link className="hidden md:inline-block transition transform hover:-translate-y-1 p-2" href="https://www.linkedin.com/in/nicolastolini/">
-              <img className="h-4" src={linkedin} alt="LinkedIn" />
+              <img className="h-4 w-4" src={linkedin} alt="LinkedIn" />
             </Link>
             <Sidebar />
           </div>

@@ -1,7 +1,7 @@
 import React, { createContext, useState, useEffect, useContext } from 'react';
 
 const AuthContext = createContext();
-const API = 'http://localhost:8080';
+const API = 'https://api.tecnosapiens.blog';
 export const useAuth = () => useContext(AuthContext);
 
 export const AuthProvider = ({ children }) => {

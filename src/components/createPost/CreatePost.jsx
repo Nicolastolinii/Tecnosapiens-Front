@@ -30,7 +30,7 @@ export const CreatePost = () => {
       const response = await fetch(`${API}/blog/create`, {
         method: 'POST',
         headers: {
-          'Authorization': `Bearer ${token}`,
+          Authorization: `Bearer ${token}`
         },
         body: formData,
       });

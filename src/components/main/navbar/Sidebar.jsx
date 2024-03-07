@@ -65,6 +65,8 @@ export const Sidebar = () => {
               </Link>
               : ""
           }
+          <Link className='text-[#f79918] ease-in duration-150' to="/login">Login</Link>
+
         </div>
       </div>
     </div>

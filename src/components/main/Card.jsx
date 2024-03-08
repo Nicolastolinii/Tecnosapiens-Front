@@ -24,7 +24,7 @@ const Card = ({ blog, showContent = true, w, flex, mb, imgh, imgmargin, padd, ce
               <span className="text-[#222]  font-bold uppercase  text-xs">{blog.categoria} </span>
             </div>
             <div>
-              <span className="text-[#888] font-normal pl-1 text-sm">— July 2, 2020</span>
+              <span className="text-[#888] font-normal pl-1 text-sm">— {new Date(blog.timeData).toLocaleDateString()}</span>
             </div>
           </div>
         </div>

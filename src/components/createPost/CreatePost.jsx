@@ -1,15 +1,15 @@
 import { useState } from "react";
 import 'react-quill/dist/quill.snow.css';
-import './style.css'; // Assuming the existence of this file for styling
-import Editor from "./Editor"; // Assuming the existence of this component
-import { useAuth } from "../../utils/AuthProvider"; // Assuming the existence of this utility
+import './style.css';
+import Editor from "./Editor";
+import { useAuth } from "../../utils/AuthProvider";
 import { Navigate } from "react-router-dom";
 
 export const CreatePost = () => {
   const [blogData, setBlogData] = useState({
     titulo: '',
     contenido: '',
-    autorId: 1, // Replace with appropriate logic to set author ID
+    autorId: 1,
     categoria: '',
     image: null,
   });
@@ -37,7 +37,7 @@ export const CreatePost = () => {
       if (response.ok) {
         const data = await response.json();
         console.log('Blog created:', data);
-        //setRedirect(true); // Assuming you want to redirect on success
+        setRedirect(true); // Assuming you want to redirect on success
       } else {
         console.error('Error creating blog:', response.statusText);
       }
@@ -46,9 +46,9 @@ export const CreatePost = () => {
     }
   }
 
-  //if (redirect) {
-    //return <Navigate to={'/'} />; // Assuming you want to redirect to '/' on success
-  //}
+  if (redirect) {
+    return <Navigate to={'/'} />;
+  }
 
   // Handle form input changes
   const handleChange = (eventOrContent) => {

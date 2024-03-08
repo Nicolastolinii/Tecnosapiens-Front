@@ -19,7 +19,7 @@ const PostPageData = () => {
                 <span>Post</span>
             </div>
             <h1 className="font-bold font-openSans text-3xl lg:text-4xl  leading-10 w-3/4 text-balance upp mt-10 mb-3 ">{data?.titulo}</h1>
-            <div className="w-[15rem] opacity-70 font-openSans text-sm flex justify-between">
+            <div className="w-[16rem] opacity-70 font-openSans text-sm flex justify-between">
                 <span>{formattedDate}</span>
                 <div>
                     <span>Categoria:</span>

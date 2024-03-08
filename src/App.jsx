@@ -14,17 +14,20 @@ const ProtectedRoute = ({ element, ...props }) => {
 
 function App() {
   return (
-    <AuthProvider>
-      <Router>
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/login" element={<LoginScreen />} />
-          <Route path="/create" element={<ProtectedRoute element={<PostCreator />} />} />
-          <Route path="/filter" element={<Filter />} />
-          <Route path='/blog/:id' element={<PostPage />} />'
-        </Routes>
-      </Router>
-    </AuthProvider>
+    <>
+      <AuthProvider>
+        <Router>
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/login" element={<LoginScreen />} />
+            <Route path="/create" element={<ProtectedRoute element={<PostCreator />} />} />
+            <Route path="/filter" element={<Filter />} />
+            <Route path='/blog/:id' element={<PostPage />} />'
+          </Routes>
+        </Router>
+      </AuthProvider>
+      <Analytics />
+    </>
   );
 }
 

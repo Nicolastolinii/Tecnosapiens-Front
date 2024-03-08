@@ -23,7 +23,7 @@ const PostPageData = () => {
                 <span>{formattedDate}</span>
                 <div>
                     <span>Categoria:</span>
-                    <span className="pl-1">IT</span>
+                    <span className="pl-1">{data?.categoria}</span>
                 </div>
             </div>
             

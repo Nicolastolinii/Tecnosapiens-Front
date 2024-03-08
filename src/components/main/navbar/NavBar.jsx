@@ -14,7 +14,7 @@ export const NavBar = ({ input = true, data }) => {
 
   const fetchData = (value) => {
     const result = data?.filter((data) => {
-      return data && data.categoria && data.categoria.toLowerCase().includes(value);
+      return data?.categoria?.toLowerCase().includes(value);
     })
     setFilteredData(result)
   }

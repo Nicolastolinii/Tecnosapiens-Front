@@ -5,7 +5,7 @@ import { PostCreator } from './screen/PostCreator';
 import { AuthProvider, useAuth } from './utils/AuthProvider';
 import { PostPage } from './screen/PostPage';
 import { Filter } from './screen/Filter';
-
+import { Analytics } from "@vercel/analytics/react"
 // Componente de protección de ruta
 const ProtectedRoute = ({ element, ...props }) => {
   const { token } = useAuth();

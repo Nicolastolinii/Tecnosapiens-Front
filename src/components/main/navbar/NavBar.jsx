@@ -2,12 +2,11 @@ import { Sidebar } from "./Sidebar"
 import SearchIcon from "../../../assets/lupa.webp"
 import github from "../../../assets/github.webp"
 import linkedin from "../../../assets/linkedin.webp"
-import { Link, useNavigate } from "react-router-dom"
+import { Link} from "react-router-dom"
 import { useState } from "react"
 
 
 export const NavBar = ({ input = true, data }) => {
-  //const navigate = useNavigate();
   const [filteredData, setFilteredData] = useState([])
   const [filterr, setFilterr] = useState("")
 
@@ -30,7 +29,7 @@ export const NavBar = ({ input = true, data }) => {
 
   return (
     <>
-      <nav className="border-b-2  flex justify-center fixed top-0 w-full bg-[#F9F9FE] z-50">
+      <nav className="border-b-2  flex justify-center fixed top-0 w-full bg-[#F9F9FE] z-40">
         <div className="w-full justify-between flex items-center py-4 px-4 md:container lg:px-16">
           {
             input ?

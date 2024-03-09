@@ -3,7 +3,6 @@ import { NavBar } from '../components/main/navbar/NavBar'
 import CarouselBlog from '../components/main/CarouselBlog'
 import { CardBig } from '../components/main/CardBig'
 import { CardSmall } from '../components/main/CardSmall'
-import { Footer } from '../Footer'
 import useFetch from '../utils/useFetch'
 import { NotFound } from '../components/404/NotFound'
 import { HashLoader } from 'react-spinners'
@@ -32,7 +31,6 @@ export const Home = () => {
             <>
                 <NavBar />
                 <NotFound />
-                <Footer />
             </>
         );
     }
@@ -45,7 +43,6 @@ export const Home = () => {
                 <CarouselBlog data={data} />
                 <CardBig data={data} />
                 <CardSmall data={data} />
-                <Footer />
             </div>
         </>
     )

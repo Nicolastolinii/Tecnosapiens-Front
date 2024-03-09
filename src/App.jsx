@@ -6,6 +6,8 @@ import { AuthProvider, useAuth } from './utils/AuthProvider';
 import { PostPage } from './screen/PostPage';
 import { Filter } from './screen/Filter';
 import { Analytics } from "@vercel/analytics/react"
+import { TermConditions } from './screen/TermConditions';
+import { Footer } from './Footer';
 // Componente de protección de ruta
 const ProtectedRoute = ({ element, ...props }) => {
   const { token } = useAuth();
@@ -22,8 +24,10 @@ function App() {
             <Route path="/login" element={<LoginScreen />} />
             <Route path="/create" element={<ProtectedRoute element={<PostCreator />} />} />
             <Route path="/filter" element={<Filter />} />
-            <Route path='/blog/:id' element={<PostPage />} />'
+            <Route path='/blog/:id' element={<PostPage />} />
+            <Route path='/terms&conditions' element={<TermConditions />} />
           </Routes>
+          <Footer />
         </Router>
       </AuthProvider>
       <Analytics />

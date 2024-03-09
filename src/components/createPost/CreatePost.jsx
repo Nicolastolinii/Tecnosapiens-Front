@@ -1,11 +1,14 @@
 import { useState } from "react";
+import Check from "../../assets/cheque.png"
 import 'react-quill/dist/quill.snow.css';
 import './style.css';
 import Editor from "./Editor";
 import { useAuth } from "../../utils/AuthProvider";
 import { Navigate } from "react-router-dom";
+import Modal from "../../utils/Modal";
 
 export const CreatePost = () => {
+  const [isModalOpen, setIsModalOpen] = useState(false);
   const [blogData, setBlogData] = useState({
     titulo: '',
     contenido: '',
@@ -14,7 +17,6 @@ export const CreatePost = () => {
     image: null,
   });
   const { token, API } = useAuth();
-  const [redirect, setRedirect] = useState(false);
 
   async function createNewPost(event) {
     event.preventDefault();
@@ -37,8 +39,9 @@ export const CreatePost = () => {
       if (response.ok) {
         const data = await response.json();
         console.log('Blog created:', data);
-        setRedirect(true); // Assuming you want to redirect on success
+        setIsModalOpen(true)
       } else {
+        setIsModalOpen(false)
         console.error('Error creating blog:', response.statusText);
       }
     } catch (error) {
@@ -46,11 +49,6 @@ export const CreatePost = () => {
     }
   }
 
-  if (redirect) {
-    return <Navigate to={'/'} />;
-  }
-
-  // Handle form input changes
   const handleChange = (eventOrContent) => {
     if (typeof eventOrContent === 'object') {
       const { name, value } = eventOrContent.target;
@@ -66,7 +64,7 @@ export const CreatePost = () => {
   };
 
   return (
-    <form className="flex flex-col container mt-10 gap-4 h-" onSubmit={createNewPost}>
+    <form className="flex flex-col container my-12 gap-4 h-" onSubmit={createNewPost}>
       <input
         type="text"
         name="titulo"
@@ -85,6 +83,17 @@ export const CreatePost = () => {
       />
       <input type="file" className="input-editor" onChange={handleImageChange} />
       <Editor value={blogData.contenido} onChange={handleChange} />
+      {
+        blogData.contenido.length > 65535 && (
+          <p className="text-red-500 font-semibold bg-slate-200 font-poppins">
+            El contenido supera la cantidad máxima de caracteres.
+          </p>
+        )
+      }
+      <Modal isModalOpen={isModalOpen} buttonText={"Redirigir"} nav="/" >
+        <h2 className="font-poppins font-semibold text-xl ">Post Creado Exitosamente...</h2>
+        <img className="py-2" src={Check} alt="check exitoso" />
+      </Modal>
       <button className="button-editor">Create post</button>
     </form>
   );

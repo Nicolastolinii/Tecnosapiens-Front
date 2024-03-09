@@ -1,13 +1,10 @@
 import React from 'react'
 import Login from '../components/login/Login'
-import { Footer } from '../Footer'
 
 export const LoginScreen = () => {
   return (
-    <div className="flex flex-col min-h-screen">
+    <div className="flex flex-col  bg-[#F9F9FE]">
       <Login/>
-      <div className="flex-grow"></div>
-      <Footer />
     </div>
   )
 }

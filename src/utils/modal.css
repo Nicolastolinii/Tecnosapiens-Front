@@ -1,0 +1,22 @@
+
+.modal-container {
+    background-color: rgba(0, 0, 0, 0.265);
+    backdrop-filter: blur(1px);
+    animation: modal-enter 1s ease-in-out;
+  }
+
+
+
+  
+
+  
+  @keyframes modal-enter {
+    0% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
+    }
+  }
+  
+  

@@ -4,8 +4,8 @@ import linkedin from './assets/linkedin.webp'
 
 export const Footer = () => {
     return (
-        <div className='mt-20 bg-gray-50'>
-            <div className='container h-[18rem] bg-gray-50'>
+        <div className='pt-20 h-full bg-gray-50'>
+            <div className='container h-[18.5rem] '>
                 <div className='h-full flex flex-col gap-10 justify-center items-center text-center'>
                     <div className=''>
                         <ul className=" flex gap-6">

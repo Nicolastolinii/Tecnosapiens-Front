@@ -16,7 +16,7 @@ export default function Editor({value,onChange}) {
     ],
   };
   return (
-    <div className="my-8 ">
+    <div className="my-8 bg-white">
     <ReactQuill
       value={value}
       theme={'snow'}

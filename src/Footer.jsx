@@ -24,9 +24,9 @@ export const Footer = () => {
                     <div className='text-[#888] font-openSans text-sm'>
                         <p>Copyright ©2024 All rights reserved </p>
                         <div className='pt-4'>
-                            <span><Link to="#">Terms & Conditions</Link></span>
+                            <span><Link to="/terms&conditions">Terms & Conditions</Link></span>
                             <span className='px-4'>/</span>
-                            <span><Link to="#">Privacy Policy</Link></span>
+                            <span><Link to="/terms&conditions">Privacy Policy</Link></span>
                         </div>
                     </div>
                 </div>

@@ -2,7 +2,7 @@
 
 export const Conditions = () => {
     return (
-        <section className="container mx-auto px-16 pt-6 pb-20 mt-[74px] font-poppins">
+        <section className="container mx-auto px-16 pt-6 pb-20 mt-[74px] font-poppins ">
             <h1 className="text-3xl font-bold">
                 Términos y condiciones
             </h1>
@@ -42,7 +42,7 @@ export const Conditions = () => {
             <h2 className="text-xl font-semibold mt-7"> Contacto</h2>
 
             <p className="text-sm lg:text-base font-light mt-5"> Si tiene alguna pregunta sobre los presentes Términos, puede
-                ponerse en contacto con el Propietario a través de la siguiente dirección de correo electrónico: <a className="underline text-sky-600 hover:text-sky-800" href="mailto:nicotolinikpo@gmail.com">nicotolinikpo@gmail.com</a> </p>
+                ponerse en contacto con el Propietario a través de la siguiente dirección de correo electrónico: <a className="underline text-sky-600 hover:text-sky-800" href="mailto:nicotolinikpo@gmail.com">tecnosapiens@hotmail.com</a> </p>
 
             <h2 className="text-xl font-semibold mt-7"> Fecha de vigencia</h2>
 

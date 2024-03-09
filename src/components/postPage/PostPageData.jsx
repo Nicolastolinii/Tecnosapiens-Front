@@ -15,10 +15,10 @@ const PostPageData = () => {
     return (
         <div className="container component-styles  flex flex-col justify-center pt-24 px-8 items-center text-center ">
             <Helmet>
-                <title>{data.title}</title>
-                <meta property="og:title" content={data.title} />
-                <meta property="og:description" content={data.description} />
-                <meta property="og:image" content={data.image} />
+                <title>{data?.titulo}</title>
+                <meta property="og:title" content={data?.titulo} />
+                <meta property="og:description" content={data?.contenido} />
+                <meta property="og:image" content={data?.imagen} />
                 <meta property="og:url" content={`${window.location.origin}/blog/${id}`} />
             </Helmet>
             <div className=" pb-3 text-[14px]  font-openSans opacity-75 w-full lg:w-3/4 text-left">

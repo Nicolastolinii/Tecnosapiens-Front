@@ -31,16 +31,16 @@ const CarouselBlog = ({ data }) => {
             </Link>
             <div className="text-black text-left flex w-full flex-col gap-3 lg:pl-[3rem]">
               <div className='font-semibold text-[14px] mb-4'>
-                <div className="flex items-center">
-                  <div className="  rounded-xl text-center bg-[#f79a185b]  items-center px-2">
-                    <span className="text-[#222]  font-bold uppercase  text-xs">{blog.categoria.split()} </span>
+                <div className="flex  mt-4 lg:mt-0 items-center">
+                  <div className="  rounded-xl text-center bg-[#f79a185b] items-center px-2">
+                    <span className="text-[#222]   font-bold uppercase  text-xs">{blog.categoria.split()} </span>
                   </div>
                   <div>
                     <span className="text-[#888] font-normal pl-1 text-sm">— {new Date(blog.timeData).toLocaleDateString()}</span>
                   </div>
                 </div>
               </div>
-              <h3 className='font-bold text-[30px] lg:text-[40px] leading-10'>{blog.titulo}</h3>
+              <h3 className='font-bold text-[25px] lg:text-[40px] leading-10'>{blog.titulo}</h3>
               <p className='font-normal text-[14px] opacity-60' dangerouslySetInnerHTML={{ __html: truncateText(blog.contenido, 500) }}></p>
             </div>
           </div>

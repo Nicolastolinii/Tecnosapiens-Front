@@ -3,7 +3,7 @@ import useFetch from "../../utils/useFetch"
 import dataFormat from './dataFormat';
 import "./style.css"
 import { useAuth } from "../../utils/AuthProvider";
-import { Helmet } from "react-helmet";
+import {  Helmet } from 'react-helmet-async'
 
 
 const PostPageData = () => {
@@ -11,7 +11,7 @@ const PostPageData = () => {
     const { id } = useParams()
     const { data } = useFetch(`${API}/blog/${id}`)
     const formattedDate = data ? dataFormat(data) : null;
-
+    
     return (
         <div className="container component-styles  flex flex-col justify-center pt-24 px-8 items-center text-center ">
             <Helmet>

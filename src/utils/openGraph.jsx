@@ -9,3 +9,4 @@ const openGraph = ({ title, description, image, url }) => {
       </head>
     );
   };
+export default openGraph;

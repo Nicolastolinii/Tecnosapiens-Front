@@ -4,10 +4,10 @@ import "./style.css"
 import LazyLoad from 'react-lazy-load';
 
 
-const Card = ({ blog, showContent = true, w, flex, mb, imgh, imgmargin, padd, centerText, href, className }) => {
+const Card = ({ blog, showContent = true, w,h, flex, mb, imgh, imgmargin, padd, centerText, href, className }) => {
 
   return (
-    <div className={`w-full ${w} ${mb} ${flex} ${className} bg-white rounded-xl shadow-custom p-4 transition transform hover:-translate-y-2 hover:-translate-x-2 hover:scale-105`}>
+    <div className={`w-full ${w} ${h} ${mb} ${flex} ${className} bg-white rounded-xl shadow-custom p-4 transition transform hover:-translate-y-2 hover:-translate-x-2 hover:scale-105`}>
       <LazyLoad className="md:pb-0 pb-4"  offset={100}>
         <Link  aria-label="Leer el artículo completo." to={href}>
           <img
@@ -32,7 +32,7 @@ const Card = ({ blog, showContent = true, w, flex, mb, imgh, imgmargin, padd, ce
           <h2 className="text-lg font-bold pt-2 leading-6 ">{blog.titulo}</h2>
         </Link>
         {showContent && (
-          <p className="font-normal text-sm text-[#888] pt-4" dangerouslySetInnerHTML={{ __html: truncateText(blog.contenido, 200) }}></p>
+          <p className="font-normal text-sm text-[#888] pt-4" dangerouslySetInnerHTML={{ __html: truncateText(blog.contenido, 150) }}></p>
         )}
       </div>
     </div>

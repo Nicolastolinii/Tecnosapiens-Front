@@ -13,7 +13,7 @@ export const CardBig = ({ data }) => {
       </div>
       <div className="container gap-14 flex-col lg:flex-row justify-center items-center  flex flex-wrap lg:px-16 pt-10">
         {latestBlogs.map((blog) => (
-          <Card key={blog.id} href={`blog/${blog.id}`} blog={blog} w={"md:w-[48%] lg:w-[30%]"} mb={"mb-14"} flex={false} imgh={"h-[200px] lg:h-[250px] min-w-[200px] "} imgmargin={"lg:mb-[30px]"} />
+          <Card key={blog.id} href={`blog/${blog.id}`} blog={blog} h={"max-h-[410px]"} w={"md:w-[48%] lg:w-[30%]"} mb={"mb-14"} flex={false} imgh={"h-[200px] lg:h-[250px] min-w-[200px] "} imgmargin={"lg:mb-[30px]"} />
         ))}
       </div>
     </div>

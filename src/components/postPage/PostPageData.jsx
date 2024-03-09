@@ -3,6 +3,7 @@ import useFetch from "../../utils/useFetch"
 import dataFormat from './dataFormat';
 import "./style.css"
 import { useAuth } from "../../utils/AuthProvider";
+import OpenGraph from "../../utils/openGraph"
 
 
 const PostPageData = () => {
@@ -13,6 +14,12 @@ const PostPageData = () => {
 
     return (
         <div className="container component-styles  flex flex-col justify-center pt-24 px-8 items-center text-center ">
+            <OpenGraph
+                title={data?.titulo}
+                description={data?.descripcion}
+                image={data?.imagen}
+                url={`${window.location.origin}/blog/${id}`}
+            />
             <div className=" pb-3 text-[14px]  font-openSans opacity-75 w-full lg:w-3/4 text-left">
                 <Link className="hover:text-blue-700 transition duration-200" to="/">Home</Link>
                 <span className=""> &gt; </span>
@@ -26,7 +33,7 @@ const PostPageData = () => {
                     <span className="pl-1 uppercase">{data?.categoria}</span>
                 </div>
             </div>
-            
+
             <div className="flex mt-12 justify-center lg:w-3/4  lg:h-[35rem]">
 
                 {data?.imagen && (

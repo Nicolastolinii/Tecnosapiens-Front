@@ -29,7 +29,7 @@ const Card = ({ blog, showContent = true, w,h, flex, mb, imgh, imgmargin, padd, 
           </div>
         </div>
         <Link to={href}>
-          <h2 className="text-lg font-bold pt-2 leading-6 ">{blog.titulo}</h2>
+          <h2 className="text-lg  font-bold pt-2 leading-6 ">{truncateText(blog.titulo, 50)}</h2>
         </Link>
         {showContent && (
           <p className="font-normal text-sm text-[#888] pt-2" dangerouslySetInnerHTML={{ __html: truncateText(blog.contenido, 50) }}></p>

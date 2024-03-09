@@ -1,28 +1,5 @@
 {
-    "rewrites": [
-      {
-        "source": "/",
-        "destination": "/index.html"
-      },
-      {
-        "source": "/login",
-        "destination": "/login"
-      },
-      {
-        "source": "/create",
-        "destination": "/create"
-      },
-      {
-        "source": "/filter",
-        "destination": "/filter"
-      },
-      {
-        "source": "/blog/:id",
-        "destination": "/blog/:id"
-      },
-      {
-        "source": "/(.*)",
-        "destination": "/404"
-      }
-    ]
-  }
+    "rewrites":  [
+        {"source": "/(.*)", "destination": "/"}
+     ]
+ }

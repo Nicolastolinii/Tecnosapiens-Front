@@ -1,11 +1,8 @@
 import { Link, useParams } from "react-router-dom"
 import useFetch from "../../utils/useFetch"
 import dataFormat from './dataFormat';
-import github from "../../assets/linkedin.webp"
-
 import "./style.css"
 import { useAuth } from "../../utils/AuthProvider";
-import {  Helmet } from 'react-helmet-async'
 
 
 const PostPageData = () => {
@@ -13,16 +10,9 @@ const PostPageData = () => {
     const { id } = useParams()
     const { data } = useFetch(`${API}/blog/${id}`)
     const formattedDate = data ? dataFormat(data) : null;
-    
+
     return (
         <div className="container component-styles  flex flex-col justify-center pt-24 px-8 items-center text-center ">
-            <Helmet>
-                <title>{data?.titulo}</title>
-                <meta property="og:title" content="nixx" />
-                <meta property="og:description" content={data?.contenido} />
-                <meta name="image" property="og:image" content={github} />
-                <meta property="og:url" content={`${window.location.origin}/blog/${id}`} />
-            </Helmet>
             <div className=" pb-3 text-[14px]  font-openSans opacity-75 w-full lg:w-3/4 text-left">
                 <Link className="hover:text-blue-700 transition duration-200" to="/">Home</Link>
                 <span className=""> &gt; </span>

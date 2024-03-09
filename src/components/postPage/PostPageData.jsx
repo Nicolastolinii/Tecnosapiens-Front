@@ -18,7 +18,7 @@ const PostPageData = () => {
                 <title>{data?.titulo}</title>
                 <meta property="og:title" content={data?.titulo} />
                 <meta property="og:description" content={data?.contenido} />
-                <meta property="og:image" content={data?.imagen} />
+                <meta name="image" property="og:image" content={data?.imagen} />
                 <meta property="og:url" content={`${window.location.origin}/blog/${id}`} />
             </Helmet>
             <div className=" pb-3 text-[14px]  font-openSans opacity-75 w-full lg:w-3/4 text-left">

@@ -1,6 +1,10 @@
+import { useEffect } from "react";
 
 
 export const Conditions = () => {
+    useEffect(() => {
+          window.scrollTo(0, 0);
+      }, []);
     return (
         <section className="container mx-auto px-16 pt-6 pb-20 mt-[74px] font-poppins ">
             <h1 className="text-3xl font-bold">

@@ -3,6 +3,7 @@ import useFetch from "../../utils/useFetch"
 import dataFormat from './dataFormat';
 import "./style.css"
 import { useAuth } from "../../utils/AuthProvider";
+import { useEffect } from "react";
 
 
 const PostPageData = () => {
@@ -10,7 +11,9 @@ const PostPageData = () => {
     const { id } = useParams()
     const { data } = useFetch(`${API}/blog/${id}`)
     const formattedDate = data ? dataFormat(data) : null;
-
+    useEffect(() => {
+        window.scrollTo(0, 0);
+    }, []);
     return (
         <div className="container component-styles  flex flex-col justify-center pt-24 px-8 items-center text-center ">
             <div className=" pb-3 text-[14px]  font-openSans opacity-75 w-full lg:w-3/4 text-left">

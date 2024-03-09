@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { NavBar } from '../components/main/navbar/NavBar'
 import CarouselBlog from '../components/main/CarouselBlog'
 import { CardBig } from '../components/main/CardBig'
@@ -9,6 +9,9 @@ import { HashLoader } from 'react-spinners'
 import { useAuth } from '../utils/AuthProvider'
 
 export const Home = () => {
+    useEffect(() => {
+        window.scrollTo(0, 0);
+    }, []);
     const { API } = useAuth();
     const { data, loading } = useFetch(`${API}/blog/all`);
     if (loading) {

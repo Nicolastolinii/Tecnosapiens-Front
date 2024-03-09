@@ -3,19 +3,44 @@ import useFetch from "../../utils/useFetch"
 import dataFormat from './dataFormat';
 import "./style.css"
 import { useAuth } from "../../utils/AuthProvider";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
+import arrow from "../../assets/arrow.png"
 
 
 const PostPageData = () => {
     const { API } = useAuth();
     const { id } = useParams()
     const { data } = useFetch(`${API}/blog/${id}`)
+    const [buttonTop, setButtonTop] = useState(true)
     const formattedDate = data ? dataFormat(data) : null;
+    const scrollTop = () => {
+        window.scrollTo({
+            top: 0,
+            behavior: "smooth"
+        });
+    }
     useEffect(() => {
-        window.scrollTo(0, 0);
+        scrollTop();
+        window.addEventListener("scroll", () => {
+            if (window.scrollY > 150) {
+                setButtonTop(true)
+            } else {
+                setButtonTop(false)
+            }
+        })
     }, []);
     return (
         <div className="container component-styles  flex flex-col justify-center pt-24 px-8 items-center text-center ">
+            {
+                buttonTop && (
+                    <div className=" fixed bottom-0 right-1 lg:bottom-14 lg:right-14">
+                        <button onClick={scrollTop} className="bg-[#f79a1843] rounded-full">
+                        <img className="h-12 w-12" src={arrow} alt="scrolltop img" />
+                        </button>
+                    </div>
+                )
+            }
+
             <div className=" pb-3 text-[14px]  font-openSans opacity-75 w-full lg:w-3/4 text-left">
                 <Link className="hover:text-blue-700 transition duration-200" to="/">Home</Link>
                 <span className=""> &gt; </span>

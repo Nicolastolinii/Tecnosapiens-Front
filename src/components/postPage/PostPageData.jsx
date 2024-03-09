@@ -3,7 +3,7 @@ import useFetch from "../../utils/useFetch"
 import dataFormat from './dataFormat';
 import "./style.css"
 import { useAuth } from "../../utils/AuthProvider";
-import OpenGraph from "../../utils/openGraph"
+import { Helmet } from "react-helmet";
 
 
 const PostPageData = () => {
@@ -14,12 +14,13 @@ const PostPageData = () => {
 
     return (
         <div className="container component-styles  flex flex-col justify-center pt-24 px-8 items-center text-center ">
-            <OpenGraph
-                title={data?.titulo}
-                description={data?.descripcion}
-                image={data?.imagen}
-                url={`${window.location.origin}/blog/${id}`}
-            />
+            <Helmet>
+                <title>{data.title}</title>
+                <meta property="og:title" content={data.title} />
+                <meta property="og:description" content={data.description} />
+                <meta property="og:image" content={data.image} />
+                <meta property="og:url" content={`${window.location.origin}/blog/${id}`} />
+            </Helmet>
             <div className=" pb-3 text-[14px]  font-openSans opacity-75 w-full lg:w-3/4 text-left">
                 <Link className="hover:text-blue-700 transition duration-200" to="/">Home</Link>
                 <span className=""> &gt; </span>

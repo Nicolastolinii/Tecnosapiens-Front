@@ -34,8 +34,8 @@ const PostPageData = () => {
             {
                 buttonTop && (
                     <div className=" fixed bottom-0 right-1 lg:bottom-14 lg:right-14">
-                        <button onClick={scrollTop} className="bg-[#f79a1843] rounded-full">
-                        <img className="h-12 w-12" src={arrow} alt="scrolltop img" />
+                        <button onClick={scrollTop} className="">
+                        <img className="h-16 w-16" src={arrow} alt="scrolltop img" />
                         </button>
                     </div>
                 )

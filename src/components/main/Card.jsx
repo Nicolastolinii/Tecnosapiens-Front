@@ -32,7 +32,7 @@ const Card = ({ blog, showContent = true, w,h, flex, mb, imgh, imgmargin, padd, 
           <h2 className="text-lg  font-bold pt-2 leading-6 ">{truncateText(blog.titulo, 50)}</h2>
         </Link>
         {showContent && (
-          <p className="font-normal text-sm text-[#888] pt-2" dangerouslySetInnerHTML={{ __html: truncateText(blog.contenido, 100) }}></p>
+          <p className="font-normal text-sm text-[#888] pt-2" dangerouslySetInnerHTML={{ __html: truncateText(blog.contenido, 150) }}></p>
         )}
       </div>
     </div>

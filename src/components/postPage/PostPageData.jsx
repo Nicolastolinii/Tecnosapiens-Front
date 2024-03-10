@@ -30,7 +30,7 @@ const PostPageData = () => {
         })
     }, []);
     return (
-        <div className="container component-styles  flex flex-col justify-center pt-24 px-8 items-center text-center ">
+        <div className="container component-styles  flex flex-col justify-center pt-24 pb-24 px-8 items-center text-center ">
             {
                 buttonTop && (
                     <div className=" fixed bottom-0 right-1 lg:bottom-14 lg:right-14">

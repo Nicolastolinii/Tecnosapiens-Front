@@ -38,7 +38,7 @@ export const FilterC = () => {
     
     return (
         <div className="container">
-            <div className="   w-full h-12 flex items-center justify-center">
+            <div className="   w-full  h-12 flex items-center justify-center">
                 <input
                     className="border w-[30rem]  rounded-3xl py-1.5 pl-8 pr-8 focus-visible:outline-none bg-no-repeat"
                     type="text"

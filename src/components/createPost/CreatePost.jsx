@@ -30,7 +30,6 @@ export const CreatePost = () => {
     try {
       const response = await fetch(`${API}/blog/create`, {
         method: 'POST',
-        credentials: 'include',
         headers: {
           Authorization: `Bearer ${token}`
         },

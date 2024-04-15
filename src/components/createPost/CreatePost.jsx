@@ -4,7 +4,6 @@ import 'react-quill/dist/quill.snow.css';
 import './style.css';
 import Editor from "./Editor";
 import { useAuth } from "../../utils/AuthProvider";
-import { Navigate } from "react-router-dom";
 import Modal from "../../utils/Modal";
 
 export const CreatePost = () => {

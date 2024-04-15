@@ -10,6 +10,7 @@ export const Profile = () => {
     const [file, setFile] = useState({
         image: null,
     });
+    console.log(file)
     const [transitioning, setTransitioning] = useState(false);
     const { API, UserId, UserName, token } = useAuth();
     const id = UserId();
@@ -25,7 +26,8 @@ export const Profile = () => {
         const formData = new FormData();
         formData.append('file', file.image);
         formData.append('autorId', id);
-        console.log("FormData:", formData);
+        console.log(file)
+
         try {
             const response = await fetch(`${API}/v1/users/upload/image`, {
                 method: 'POST',

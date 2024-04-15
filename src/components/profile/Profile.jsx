@@ -18,7 +18,7 @@ export const Profile = () => {
     const { data } = useFetch(`${API}/v1/user/data/${id}`)
     console.log('data',data)
 
-    const userImg = data?.blogs[0].autorImg
+    const userImg = data?.image
     console.log('data img',userImg)
     const { img } = useFetch(`${API}/v1/user/data/${userImg}`)
     console.log('img',img)

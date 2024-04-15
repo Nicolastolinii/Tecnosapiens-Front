@@ -26,8 +26,7 @@ function App() {
             <Route path="/login" element={<LoginScreen />} />
             <Route path="/register" element={<RegisterScreen />} />
             <Route path="/create" element={<ProtectedRoute element={<PostCreator />} />} />
-            <Route path="/profile" element={<ProfileScreen />} />
-
+            <Route path="/profile" element={<ProtectedRoute element={<ProfileScreen />} />} />
             <Route path="/filter" element={<Filter />} />
             <Route path='/blog/:id' element={<PostPage />} />
             <Route path='/terms&conditions' element={<TermConditions />} />

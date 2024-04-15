@@ -16,10 +16,12 @@ export const Profile = () => {
     const id = UserId();
     const userName = UserName();
     const { data } = useFetch(`${API}/v1/user/data/${id}`)
+    console.log('data',data)
+
     const userImg = data?.blogs[0].autorImg
-    console.log(userImg)
+    console.log('data img',userImg)
     const { img } = useFetch(`${API}/v1/user/data/${userImg}`)
-    console.log(img)
+    console.log('img',img)
 
     const handleImageChange = (event) => {
         setFile({ ...file, image: event.target.files[0] });

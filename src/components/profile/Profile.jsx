@@ -16,7 +16,7 @@ export const Profile = () => {
     const userName = UserName();
     const { data } = useFetch(`${API}/v1/user/data/${id}`)
     const handleImageChange = (event) => {
-        setBlogData({ ...blogData, image: event.target.files[0] });
+        setFile({ ...file, image: event.target.files[0] });
       };
 
     async function uploadImg(event) {

@@ -8,9 +8,10 @@ function useFetch(url) {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch(url,{
+        /**const response = await fetch(url,{
           credentials: 'include'
-        });
+        });**/
+        const response = await fetch(url);
         if (!response.ok) {
           throw new Error('Network response was not ok');
         }

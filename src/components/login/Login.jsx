@@ -6,6 +6,7 @@ import { useNavigate } from "react-router-dom";
 
 const Login = () => {
   const [formData, setFormData] = useState({ user: '', password: '' });
+  const [credentialError, setCredentialError] = useState(false);
   const { login, API } = useAuth();
   const navigate = useNavigate();
 
@@ -22,13 +23,16 @@ const Login = () => {
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify(formData), // Suponiendo que formData contiene email y password
+        body: JSON.stringify(formData),
       });
+      if (response.status == 401) {
+        setCredentialError(true)
+      }
       if (!response.ok) {
         throw new Error('Error de red al iniciar sesión');
       }
       const token = await response.text();
-      login(token); // Llama a la función login del contexto de autenticación para guardar el token
+      login(token);
       navigate("/")
     } catch (error) {
       console.error('Error al iniciar sesión:', error);
@@ -36,8 +40,8 @@ const Login = () => {
   };
 
   return (
-    <div className="min-h-[60vh] pt-28  flex justify-center items-center">
-      <div className="bg-gray-100 p-8 rounded shadow-xl w-full sm:w-96">
+    <div className="min-h-[60vh] pt-28  flex justify-center flex-col items-center">
+      <div className="bg-gray-100  transition-all px-8 pt-8 pb-10 rounded shadow-xl w-full sm:w-96">
         <h2 className="text-2xl font-bold mb-6 text-center">Iniciar sesión</h2>
         <form onSubmit={handleSubmit}>
           <div className="mb-4">
@@ -71,6 +75,11 @@ const Login = () => {
             Iniciar sesión
           </button>
         </form>
+        <div className=' duration-200'>
+          {
+            credentialError ? <p className='text-white mt-12 bg-red-600 py-4 px-10 opacity-90 rounded-lg text-center'>Error de credenciales</p> : ""
+          }
+        </div>
       </div>
     </div>
   );

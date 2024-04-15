@@ -8,6 +8,8 @@ import { Filter } from './screen/Filter';
 import { Analytics } from "@vercel/analytics/react"
 import { TermConditions } from './screen/TermConditions';
 import { Footer } from './Footer';
+import { RegisterScreen } from './screen/RegisterScreen';
+import { ProfileScreen } from './screen/ProfileScreen';
 // Componente de protección de ruta
 const ProtectedRoute = ({ element, ...props }) => {
   const { token } = useAuth();
@@ -22,7 +24,10 @@ function App() {
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/login" element={<LoginScreen />} />
+            <Route path="/register" element={<RegisterScreen />} />
             <Route path="/create" element={<ProtectedRoute element={<PostCreator />} />} />
+            <Route path="/profile" element={<ProfileScreen />} />
+
             <Route path="/filter" element={<Filter />} />
             <Route path='/blog/:id' element={<PostPage />} />
             <Route path='/terms&conditions' element={<TermConditions />} />

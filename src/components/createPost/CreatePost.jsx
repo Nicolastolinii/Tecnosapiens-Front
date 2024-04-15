@@ -12,11 +12,11 @@ export const CreatePost = () => {
   const [blogData, setBlogData] = useState({
     titulo: '',
     contenido: '',
-    autorId: 1,
     categoria: '',
     image: null,
   });
-  const { token, API } = useAuth();
+  const { token, API,UserId } = useAuth();
+  const userId = UserId();
 
   async function createNewPost(event) {
     event.preventDefault();
@@ -25,7 +25,7 @@ export const CreatePost = () => {
     formData.append('file', blogData.image);
     formData.append('titulo', blogData.titulo);
     formData.append('contenido', blogData.contenido);
-    formData.append('autorId', blogData.autorId);
+    formData.append('autorId', userId);
     formData.append('categoria', blogData.categoria);
     console.log("FormData:", formData);
     try {

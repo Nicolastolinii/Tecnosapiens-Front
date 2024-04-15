@@ -1,7 +1,8 @@
 import React, { createContext, useState, useEffect, useContext } from 'react';
+import { decodeJwt } from 'jose';
 
 const AuthContext = createContext();
-const API = 'https://api.tecnosapiens.blog';
+const API = 'http://localhost:8080';
 export const useAuth = () => useContext(AuthContext);
 
 export const AuthProvider = ({ children }) => {
@@ -17,6 +18,31 @@ export const AuthProvider = ({ children }) => {
     setToken(null);
   };
 
+  const UserId = () => {
+    if (token) {
+      try {
+        const decodedToken = decodeJwt(token);
+        return decodedToken.id;
+      } catch (error) {
+        console.error('Error decoding JWT:', error);
+        return null;
+      }
+    }
+    return null;
+  };
+  const UserName = () => {
+    if (token) {
+      try {
+        const decodedToken = decodeJwt(token);
+        return decodedToken.username;
+      } catch (error) {
+        console.error('Error decoding JWT:', error);
+        return null;
+      }
+    }
+    return null;
+  };
+
   useEffect(() => {
     const storedToken = localStorage.getItem('token');
     if (storedToken) {
@@ -25,7 +51,7 @@ export const AuthProvider = ({ children }) => {
   }, []);
 
   return (
-    <AuthContext.Provider value={{ token, login, logout, API }}>
+    <AuthContext.Provider value={{ token, login, logout, API, UserId, UserName }}>
       {children}
     </AuthContext.Provider>
   );

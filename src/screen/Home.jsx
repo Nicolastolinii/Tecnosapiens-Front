@@ -12,7 +12,7 @@ export const Home = () => {
     useEffect(() => {
         window.scrollTo(0, 0);
     }, []);
-    const { API } = useAuth();
+    const { API, UserId } = useAuth();
     const { data, loading } = useFetch(`${API}/blog/all`);
     if (loading) {
         // Muestra el componente Loader mientras los datos se están cargando

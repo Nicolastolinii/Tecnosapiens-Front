@@ -4,15 +4,18 @@ import { Link } from 'react-router-dom';
 import useFetch from '../../../utils/useFetch';
 
 export const Sidebar = () => {
-  const { token, API } = useAuth();
+  const { token, API, UserName, logout } = useAuth();
+  const user = UserName();
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
   const [isHovered, setIsHovered] = useState(false);
-  const [isCategoriesOpen, setIsCategoriesOpen] = useState(false); // Nuevo estado para controlar si la sección de categorías está abierta o cerrada
+  const [isCategoriesOpen, setIsCategoriesOpen] = useState(false); 
   const { data } = useFetch(`${API}/blog/category`)
   const toggleSidebar = () => {
     setIsSidebarOpen(!isSidebarOpen);
   };
-
+  const handleLogout = () => {
+    logout();
+  };
   const toggleCategories = () => {
     setIsCategoriesOpen(!isCategoriesOpen);
   };
@@ -25,7 +28,7 @@ export const Sidebar = () => {
         onMouseLeave={() => setIsHovered(false)}
         onClick={toggleSidebar}
       >
-        <span  className="block h-0.5 w-7 bg-black"></span>
+        <span className="block h-0.5 w-7 bg-black"></span>
         <span
           className={`block h-0.5 bg-black  transition-all duration-300 ${isHovered ? 'w-4 my-1' : 'w-7 my-2'
             }`}
@@ -44,7 +47,16 @@ export const Sidebar = () => {
           <span className="block h-0.5 w-6 bg-black transform -rotate-45 translate-y-0.5"></span>
         </button>
         <div className="transition-all px-10 mt-[4rem] w-full h-2/4 flex flex-col space-y-2 font-poppins text-[14px] text-black">
-          <Link className='text-[#f79918] ease-in duration-150' to="/">Inicio</Link>
+
+          {
+            token && user ? (
+              <Link className='text-[#f79918] ease-in duration-150 uppercase' to={"/profile"}>{user}</Link>
+            ) : (
+              <Link className='text-[#f79918] ease-in duration-150' to="/">Bienvenido</Link>
+
+            )
+          }
+
           <button aria-label='boton del menu' className="text-left hover:text-[#f79918] ease-in duration-150 focus:outline-none flex items-center justify-between w-full" onClick={toggleCategories}>
             <span>Categorías</span>
             {isCategoriesOpen ? <span>▲</span> : <span>▼</span>}
@@ -60,12 +72,20 @@ export const Sidebar = () => {
           )}
           {
             token ?
-              <Link to={"/create"} className='hover:text-[#f79918] ease-in duration-150'>
+              <div className='flex flex-col'>
+                <Link to={"/create"} className='hover:text-[#f79918] ease-in duration-150'>
                 CreateBlog
               </Link>
+              <button onClick={handleLogout} className='w-full mt-10 bg-[#f79a18c7] rounded py-2'>Logout</button>
+              </div>
               : ""
           }
-          <Link className='hover:text-[#f79918] ease-in duration-150' to="/login">Login</Link>
+          {
+            token ? ""
+              :
+              <Link className='hover:text-[#f79918] ease-in duration-150' to="/login">Login</Link>
+
+          }
 
         </div>
       </div>

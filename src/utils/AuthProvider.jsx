@@ -3,6 +3,7 @@ import { decodeJwt } from 'jose';
 
 const AuthContext = createContext();
 const API = 'https://api.tecnosapiens.blog';
+//const API = 'http://localhost:8080';
 export const useAuth = () => useContext(AuthContext);
 
 export const AuthProvider = ({ children }) => {

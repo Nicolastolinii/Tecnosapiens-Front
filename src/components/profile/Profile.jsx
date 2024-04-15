@@ -16,12 +16,8 @@ export const Profile = () => {
     const id = UserId();
     const userName = UserName();
     const { data } = useFetch(`${API}/v1/user/data/${id}`)
-    console.log('data',data)
-
     const userImg = data?.image
-    console.log('data img',userImg)
-    const { img } = useFetch(`${API}/v1/user/data/${userImg}`)
-    console.log('img',img)
+
 
     const handleImageChange = (event) => {
         setFile({ ...file, image: event.target.files[0] });
@@ -66,7 +62,7 @@ export const Profile = () => {
             <div className='min-h-[60vh] px-16 container pt-16 flex flex-col items-center'>
                 <div className='py-20 w-full flex flex-col items-center gap-6 justify-center'>
                     <h1 className='font-poppins font-semibold text-3xl'>Bienvenido {userName}</h1>
-                    <Avatar src={"https://images.unsplash.com/photo-1570295999919-56ceb5ecca61?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=facearea&facepad=4&w=880&h=880&q=100"} on={true} />
+                    <Avatar src={userImg} on={true} />
                 </div>
                 <div className='py-6 px-6 w-full'>
                     <div className='flex'>

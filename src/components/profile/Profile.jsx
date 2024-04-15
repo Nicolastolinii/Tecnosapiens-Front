@@ -37,7 +37,6 @@ export const Profile = () => {
                 body: formData,
             });
             if (response.ok) {
-                const data = await response.json();
                 console.log('avatar cambiado correctamente', data);
             } else {
                 console.error('Error al cargar el avatar:', response.statusText);

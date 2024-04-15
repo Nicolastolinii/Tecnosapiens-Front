@@ -15,6 +15,9 @@ export const Profile = () => {
     const id = UserId();
     const userName = UserName();
     const { data } = useFetch(`${API}/v1/user/data/${id}`)
+    const handleImageChange = (event) => {
+        setBlogData({ ...blogData, image: event.target.files[0] });
+      };
 
     async function uploadImg(event) {
         event.preventDefault();
@@ -96,7 +99,7 @@ export const Profile = () => {
                                     </svg>
                                     <h2 className="mt-1 font-medium tracking-wide text-gray-900">Payment File</h2>
                                     <p className="mt-2 text-xs tracking-wide text-gray-900">Upload or darg & drop your file  </p>
-                                    <input id="dropzone-file" type="file" className="hidden" />
+                                    <input id="dropzone-file" type="file" onChange={handleImageChange} className="hidden" />
                                 </label>
                                 <button className='mt-8 px-6 py-2 border rounded  bg-gray-300 font-poppins   '>Cargar</button>
                             </form>

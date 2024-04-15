@@ -16,6 +16,11 @@ export const Profile = () => {
     const id = UserId();
     const userName = UserName();
     const { data } = useFetch(`${API}/v1/user/data/${id}`)
+    const userImg = data?.blogs[0].autorImg
+    console.log(userImg)
+    const { img } = useFetch(`${API}/v1/user/data/${userImg}`)
+    console.log(img)
+
     const handleImageChange = (event) => {
         setFile({ ...file, image: event.target.files[0] });
       };
@@ -26,8 +31,6 @@ export const Profile = () => {
         const formData = new FormData();
         formData.append('file', file.image);
         formData.append('autorId', id);
-        console.log(file)
-
         try {
             const response = await fetch(`${API}/v1/users/upload/image`, {
                 method: 'POST',
@@ -37,7 +40,7 @@ export const Profile = () => {
                 body: formData,
             });
             if (response.ok) {
-                console.log('avatar cambiado correctamente', data);
+                console.log('avatar cambiado correctamente');
             } else {
                 console.error('Error al cargar el avatar:', response.statusText);
             }

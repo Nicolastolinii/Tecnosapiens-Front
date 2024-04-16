@@ -5,6 +5,7 @@ import './style.css';
 import Editor from "./Editor";
 import { useAuth } from "../../utils/AuthProvider";
 import Modal from "../../utils/Modal";
+import ImageCompressor from "../../utils/ImageCompressor";
 
 export const CreatePost = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -61,6 +62,9 @@ export const CreatePost = () => {
   const handleImageChange = (event) => {
     setBlogData({ ...blogData, image: event.target.files[0] });
   };
+  const handleCompressedImage = (imageBlob) => {
+    setBlogData({ ...blogData, image: imageBlob });
+  };
 
   return (
     <form className="flex flex-col container my-12 gap-4 h-" onSubmit={createNewPost}>
@@ -80,7 +84,7 @@ export const CreatePost = () => {
         value={blogData.categoria.toLowerCase()}
         onChange={handleChange}
       />
-      <input type="file" className="input-editor" onChange={handleImageChange} />
+      <ImageCompressor className={"input-editor"} onCompress={handleCompressedImage} />
       <Editor value={blogData.contenido} onChange={handleChange} />
       {
         blogData.contenido.length > 65535 && (

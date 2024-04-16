@@ -10,7 +10,6 @@ export const Profile = () => {
     const [file, setFile] = useState({
         image: null,
     });
-    console.log(file)
     const [transitioning, setTransitioning] = useState(false);
     const { API, UserId, UserName, token } = useAuth();
     const id = UserId();
@@ -61,7 +60,7 @@ export const Profile = () => {
         <section>
             <div className='min-h-[60vh] px-16 container pt-16 flex flex-col items-center'>
                 <div className='py-20 w-full flex flex-col items-center gap-6 justify-center'>
-                    <h1 className='font-poppins font-semibold text-3xl'>Bienvenido {userName}</h1>
+                    <h1 className='font-poppins font-semibold text-3xl '>¡Bienvenido {userName}!</h1>
                     <Avatar src={userImg} on={true} />
                 </div>
                 <div className='py-6 px-6 w-full'>

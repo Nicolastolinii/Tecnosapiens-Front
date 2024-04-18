@@ -28,6 +28,9 @@ export const CreatePost = () => {
     formData.append('autorId', userId);
     formData.append('categoria', blogData.categoria);
     console.log("FormData:", formData);
+    for (let [key, value] of formData.entries()) {
+      console.log(`${key}: ${value}`);
+  }
     try {
       const response = await fetch(`${API}/blog/create`, {
         method: 'POST',
@@ -84,7 +87,7 @@ export const CreatePost = () => {
         value={blogData.categoria.toLowerCase()}
         onChange={handleChange}
       />
-      <ImageCompressor className={"input-editor"} onCompress={handleCompressedImage} />
+      <input type="file" className="input-editor" onChange={handleImageChange} />
       <Editor value={blogData.contenido} onChange={handleChange} />
       {
         blogData.contenido.length > 65535 && (

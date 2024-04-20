@@ -15,7 +15,7 @@ export const CreatePost = () => {
     categoria: '',
     image: null,
   });
-  const { token, API,UserId } = useAuth();
+  const { token, API, UserId } = useAuth();
   const userId = UserId();
 
   async function createNewPost(event) {
@@ -30,7 +30,7 @@ export const CreatePost = () => {
     console.log("FormData:", formData);
     for (let [key, value] of formData.entries()) {
       console.log(`${key}: ${value}`);
-  }
+    }
     try {
       const response = await fetch(`${API}/blog/create`, {
         method: 'POST',
@@ -63,11 +63,14 @@ export const CreatePost = () => {
 
 
   const handleImageChange = (event) => {
-    setBlogData({ ...blogData, image: event.target.files[0] });
+    ImageCompressor(event.target.files[0], (compressedImage) => {
+      console.log("compress",compressedImage);
+      setBlogData({ ...blogData, image: compressedImage  });
+      console.log("input",event.target.files[0])
+
+    })
   };
-  const handleCompressedImage = (imageBlob) => {
-    setBlogData({ ...blogData, image: imageBlob });
-  };
+
 
   return (
     <form className="flex flex-col container my-12 gap-4 h-" onSubmit={createNewPost}>

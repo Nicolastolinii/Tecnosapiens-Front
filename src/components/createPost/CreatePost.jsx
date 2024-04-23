@@ -66,7 +66,7 @@ export const CreatePost = () => {
     ImageCompressor(event.target.files[0], (compressedImage) => {
       console.log("compress",compressedImage);
       setBlogData({ ...blogData, image: compressedImage  });
-      console.log("input",event.target.files[0])
+      //console.log("input",event.target.files[0])
 
     })
   };

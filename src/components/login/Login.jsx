@@ -31,9 +31,11 @@ const Login = () => {
       if (!response.ok) {
         throw new Error('Error de red al iniciar sesión');
       }
-      const token = await response.text();
-      login(token);
-      navigate("/")
+      if (response.ok) {
+        const token = await response.text();
+        login(token);
+        navigate("/")
+      }
     } catch (error) {
       console.error('Error al iniciar sesión:', error);
     }

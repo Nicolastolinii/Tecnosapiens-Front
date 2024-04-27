@@ -4,10 +4,11 @@ import "./style.css"
 import LazyLoad from 'react-lazy-load';
 import { Avatar } from "../avatar/Avatar";
 import view from "../../assets/ver.png"
+import { useState } from "react";
 
 
 const Card = ({ blog, showContent = true, w, h, flex, mb, imgh, imgmargin, padd, centerText, href, className }) => {
-
+  const [showTooltip, setShowTooltip] = useState(false);
   return (
     <div className={`w-full ${w} ${h} ${mb} ${flex} ${className} bg-white rounded-xl shadow-custom p-4 transition transform lg:hover:-translate-y-2 lg:hover:-translate-x-2 lg:hover:scale-105`}>
       <LazyLoad className="md:pb-0 pb-4" offset={100}>
@@ -26,7 +27,17 @@ const Card = ({ blog, showContent = true, w, h, flex, mb, imgh, imgmargin, padd,
             <div className="flex items-center  gap-2">
               <span className="text-[#888] tracking-wider font-semibold  text-xs">{new Date(blog.timeData).toLocaleDateString()}</span>
               <span className="text-[#888] font-semibold text-xs">—</span>
-              <img className="h-[18px]" src={view} alt="Vistas" />
+              <div className="relative"
+              onMouseEnter={() => setShowTooltip(true)}
+              onMouseLeave={() => setShowTooltip(false)}
+              >
+                <img className="h-[18px]" src={view} alt="Vistas" />
+                {showTooltip && (
+                <div className="bg-black text-[#888] text-xs rounded py-1 px-2 text-center mt-1 opacity-100 absolute w-16  left-6 transform -translate-x-1/2 pointer-events-none transition-opacity duration-300">
+                  {blog?.view} vistas
+                </div>
+                )}
+              </div>
               <span className="text-[#888] font-semibold text-xs">{blog?.view}</span>
             </div>
 

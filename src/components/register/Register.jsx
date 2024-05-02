@@ -1,15 +1,22 @@
 import { useState } from 'react';
 import { useAuth } from '../../utils/AuthProvider';
 import { useNavigate } from "react-router-dom";
+import Eye from "../../assets/ver.png"
+import EyeClosed from "../../assets/EyeClosed.png"
+
 
 
 
 export const Register = () => {
     const [formData, setFormData] = useState({ user: '', userName: '', correo: '', password: '' });
     const [statusCode, setStatusCode] = useState();
+    const [showPassword, setShowPassword] = useState(false);
     const { API } = useAuth();
     const navigate = useNavigate();
 
+    const togglePasswordVisibility = () => {
+        setShowPassword(!showPassword);
+    };
     const isValidEmail = email => {
         return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
     }
@@ -86,9 +93,10 @@ export const Register = () => {
                             {statusCode === 101 && (
                                 <span className='text-red-700 font-medium  opacity-90 rounded-lg '>*Contraseña invalida</span>
                             )}
+
                         </div>
                         <input
-                            type="password"
+                            type={showPassword ? 'text' : 'password'}
                             id="password"
                             name="password"
                             value={formData.password}
@@ -96,11 +104,22 @@ export const Register = () => {
                             className={`${statusCode === 101 ? 'focus:border-red-500 border-red-500 border-2' : "border-gray-300 border"} w-full   rounded px-3 py-2 mt-1 focus:outline-none focus:border-black`}
                             required
                         />
+                        <button
+                            type="button"
+                            className="absolute translate-y-3.5 -translate-x-8 "
+                            onClick={togglePasswordVisibility}
+                        >
+                            <img
+                                src={showPassword ? Eye : EyeClosed}
+                                alt={showPassword ? 'Ocultar contraseña' : 'Mostrar contraseña'}
+                            />
+                        </button>
                         <ul className="list-disc pl-5 pt-2 opacity-60">
-                            <li>Minimo 8 caracteres.</li>
-                            <li>Al menos un número.</li>
-                            <li>Al menos Una letra mayúscula y minuscula.</li>
-                            <li>Al menos un símbolo especial.</li>
+                            <li className={`${formData.password.length >= 8 ? 'line-through' : ''}`}>Mínimo 8 caracteres</li>
+                            <li className={`${/\d/.test(formData.password) ? 'line-through' : ''}`}>Al menos un número</li>
+                            <li className={`${/[A-Z]/.test(formData.password) ? 'line-through' : ''}`}>Al menos una letra mayúscula</li>
+                            <li className={`${/[a-z]/.test(formData.password) ? 'line-through' : ''}`}>Al menos una letra minúscula</li>
+                            <li className={`${/[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]/.test(formData.password) ? 'line-through' : ''}`}>Al menos un símbolo especial</li>
                         </ul>
                     </div>
                     <div className="mb-6">

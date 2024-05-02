@@ -4,6 +4,7 @@ import { useAuth } from '../../utils/AuthProvider';
 import Card from '../main/Card';
 import { useState } from 'react';
 import { Avatar } from '../avatar/Avatar';
+import ImageCompressor from '../../utils/ImageCompressor';
 
 export const Profile = () => {
     const [render, setRender] = useState('posts')
@@ -19,7 +20,10 @@ export const Profile = () => {
 
 
     const handleImageChange = (event) => {
-        setFile({ ...file, image: event.target.files[0] });
+        ImageCompressor(event.target.files[0], (compressedImage) => {
+            //console.log("compress",compressedImage);
+            setFile({ ...file, image: compressedImage });
+        })
       };
 
     async function uploadImg(event) {

@@ -1,5 +1,5 @@
 
-import { useLocation } from "react-router-dom";
+import { Navigate, useLocation } from "react-router-dom";
 import { useAuth } from "../utils/AuthProvider";
 import { NavBar } from "../components/main/navbar/NavBar";
 import { useEffect, useState } from "react";
@@ -30,6 +30,9 @@ export const VerifyOtp = () => {
                 if (response.status == 200) {
                     setStatus(response.status)
                     setLoading(false)
+                    setTimeout(() => {
+                        Navigate("/");
+                    }, 2000);
                 }
                 if (!response.ok) {
                     setStatus(response.status)

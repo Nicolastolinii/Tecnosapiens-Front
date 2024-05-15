@@ -57,15 +57,15 @@ export const CreatePost = () => {
       const { name, value } = eventOrContent.target;
       setBlogData({ ...blogData, [name]: value });
     } else {
-      setBlogData({ ...blogData, contenido: eventOrContent }); // Update editor content
+      setBlogData({ ...blogData, contenido: eventOrContent });
     }
   };
 
 
   const handleImageChange = (event) => {
     ImageCompressor(event.target.files[0], (compressedImage) => {
-      console.log("compress",compressedImage);
-      setBlogData({ ...blogData, image: compressedImage  });
+      // console.log("compress",compressedImage);
+      setBlogData({ ...blogData, image: compressedImage });
       //console.log("input",event.target.files[0])
 
     })
@@ -82,14 +82,22 @@ export const CreatePost = () => {
         value={blogData.titulo}
         onChange={handleChange}
       />
-      <input
-        type="text"
+      <select
         className="input-editor"
         name="categoria"
-        placeholder="Categoria"
         value={blogData.categoria.toLowerCase()}
         onChange={handleChange}
-      />
+      >
+        <option value="">Selecciona una categoría</option>
+        <option value="tecnología">IT</option>
+        <option value="deportes">Ciberseguridad</option>
+        <option value="viajes">IA</option>
+        <option value="viajes">Redes y comunicaciones</option>
+        <option value="viajes">Programación</option>
+        <option value="viajes">Cloud computing</option>
+        <option value="viajes">Ciencia de datos</option>
+
+      </select>
       <input type="file" className="input-editor" onChange={handleImageChange} />
       <Editor value={blogData.contenido} onChange={handleChange} />
       {

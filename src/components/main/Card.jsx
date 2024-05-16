@@ -53,7 +53,7 @@ const Card = ({ blog, showContent = true, w, h, flex, mb, imgh, imgmargin, padd,
           <div className="  rounded-xl text-center bg-[#f79a185b] drop-shadow-lg  items-center px-2">
             <span className="text-[#222]  font-semibold uppercase  text-xs">{blog.categoria} </span>
           </div>
-          <div className="flex  gap-1">
+          <div className="flex items-center  gap-1">
             <Avatar wh={"h-7 w-7"} src={blog.autorImg} />
             <p className=" px-2 font-poppins tracking-wider capitalize font-normal drop-shadow-lg hover:text-[#fec171] hover:-translate-y-0.5 transition-all duration-300">{blog.autor}</p>
           </div>

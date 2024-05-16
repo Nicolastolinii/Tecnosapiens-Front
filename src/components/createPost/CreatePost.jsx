@@ -28,10 +28,13 @@ export const CreatePost = () => {
     formData.append('autorId', userId);
     formData.append('categoria', blogData.categoria);
     console.log("FormData:", formData);
-    for (let [key, value] of formData.entries()) {
-      console.log(`${key}: ${value}`);
-    }
+    // for (let [key, value] of formData.entries()) {
+    //   console.log(`${key}: ${value}`);
+    // }
     try {
+      for (let [key, value] of formData.entries()) {
+        console.log(`${key}: ${value}`);
+      }
       const response = await fetch(`${API}/blog/create`, {
         method: 'POST',
         headers: {
@@ -89,13 +92,13 @@ export const CreatePost = () => {
         onChange={handleChange}
       >
         <option value="">Selecciona una categoría</option>
-        <option value="tecnología">IT</option>
-        <option value="deportes">Ciberseguridad</option>
-        <option value="viajes">IA</option>
-        <option value="viajes">Redes y comunicaciones</option>
-        <option value="viajes">Programación</option>
-        <option value="viajes">Cloud computing</option>
-        <option value="viajes">Ciencia de datos</option>
+        <option value="IT">IT</option>
+        <option value="Ciberseguridad">Ciberseguridad</option>
+        <option value="IA">IA</option>
+        <option value="Redes y comunicaciones">Redes y comunicaciones</option>
+        <option value="Programación">Programación</option>
+        <option value="Cloud computing">Cloud computing</option>
+        <option value="Ciencia de datos">Ciencia de datos</option>
 
       </select>
       <input type="file" className="input-editor" onChange={handleImageChange} />

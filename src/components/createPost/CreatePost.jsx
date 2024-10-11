@@ -28,9 +28,6 @@ export const CreatePost = () => {
     formData.append('autorId', userId);
     formData.append('categoria', blogData.categoria);
     console.log("FormData:", formData);
-    // for (let [key, value] of formData.entries()) {
-    //   console.log(`${key}: ${value}`);
-    // }
     try {
       for (let [key, value] of formData.entries()) {
         console.log(`${key}: ${value}`);
@@ -67,9 +64,7 @@ export const CreatePost = () => {
 
   const handleImageChange = (event) => {
     ImageCompressor(event.target.files[0], (compressedImage) => {
-      // console.log("compress",compressedImage);
       setBlogData({ ...blogData, image: compressedImage });
-      //console.log("input",event.target.files[0])
 
     })
   };

@@ -13,7 +13,6 @@ export const Register = () => {
     const [showPassword, setShowPassword] = useState(false);
     const { API } = useAuth();
     const navigate = useNavigate();
-
     const togglePasswordVisibility = () => {
         setShowPassword(!showPassword);
     };
